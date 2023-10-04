@@ -39,6 +39,7 @@ Als Sparkassenkunde möchte ich einen Tilgungsplan für Kredite berechnen könne
 - [ ] stylesheet S-Com erfragen oder an der Webseite ausrichten
 - [ ] die Rechnungsparameter sollen als URL-Parameter übergeben werden können
 - [ ] MUI als ReactJS Komponenten verwenden <https://mui.com/getting-started/usage/>
+- [ ] Die App soll auf unterschiedlichen Systemen laufen (Windows, Linux, Mac) Ingolf fragen?
 
 - Beispiele:
   <https://www.sparkasse.de/rechner/autokostenrechner.html>
