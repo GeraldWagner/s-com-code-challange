@@ -6,6 +6,13 @@ const Calculator = () => {
     const [debitInterest, setDebitInterest] = useState(1.5);
     const [repayment, setRepayment] = useState(3);
 
+    const debitNum = debitInterest / 100 + 1;
+    const owing = loan * debitNum;
+
+    const month = 10;
+    const repayParm = (debitNum ** month - 1) / debitNum - 1;
+    const repaying = repayment * repayParm;
+
     const changeLoan = (event) => {
         setLoan(event.target.value);
     };
@@ -59,6 +66,13 @@ const Calculator = () => {
             </div>
 
             <button onClick={calculateRate}>Berechnen</button>
+
+            <div className="calculation-container">
+                <div>{month}</div>
+                <div>{debitNum}</div>
+                <div>{owing}</div>
+                <div>{repaying}</div>
+            </div>
         </div>
     );
 };
