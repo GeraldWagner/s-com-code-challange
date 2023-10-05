@@ -1,33 +1,52 @@
-import "./Calculator.scss";
 import { useState } from "react";
+import { calculateYearlyDepts } from "./CalculationInterest";
+import CalculatorTable from "./CalculatorTable";
+
+import "./Calculator.scss";
 
 const Calculator = () => {
     const [loan, setLoan] = useState(250000);
     const [debitInterest, setDebitInterest] = useState(1.5);
     const [repayment, setRepayment] = useState(3);
-
-    const debitNum = debitInterest / 100 + 1;
-    const owing = loan * debitNum;
-
-    const month = 10;
-    const repayParm = (debitNum ** month - 1) / debitNum - 1;
-    const repaying = repayment * repayParm;
+    const [years, setYears] = useState(10);
+    const [showCalculation, setShowCalculation] = useState(false);
 
     const changeLoan = (event) => {
-        setLoan(event.target.value);
+        let val = event.target.value;
+        if (val <= 0) {
+            val = 1;
+        }
+        setLoan(val);
     };
 
     const changeDebitInterest = (event) => {
-        setDebitInterest(event.target.value);
+        let val = event.target.value;
+        if (val <= 0) {
+            val = 0.1;
+        }
+        setDebitInterest(val);
     };
 
     const changeRepayment = (event) => {
-        setRepayment(event.target.value);
+        let val = event.target.value;
+        if (val <= 0) {
+            val = 0.1;
+        }
+        setRepayment(val);
     };
 
     const calculateRate = () => {
-        alert(`${loan}, ${debitInterest}, ${repayment}`);
+        setShowCalculation(true);
+        console.table(tilgungsplan);
+        console.log(monthlyRate);
     };
+
+    const { tilgungsplan, monthlyRate } = calculateYearlyDepts(
+        loan,
+        debitInterest,
+        repayment,
+        years
+    );
 
     return (
         <div className="calculator">
@@ -68,10 +87,9 @@ const Calculator = () => {
             <button onClick={calculateRate}>Berechnen</button>
 
             <div className="calculation-container">
-                <div>{month}</div>
-                <div>{debitNum}</div>
-                <div>{owing}</div>
-                <div>{repaying}</div>
+                {showCalculation && (
+                    <CalculatorTable tilgungsplan={tilgungsplan} />
+                )}
             </div>
         </div>
     );
