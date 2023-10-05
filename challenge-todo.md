@@ -22,11 +22,14 @@ Als Sparkassenkunde möchte ich einen Tilgungsplan für Kredite berechnen könne
 - Die Implementierung kann in Teilen prototypenhaft erfolgen, soll aber wesentliche Programmier-/Architekturkonzepte erkennen lassen. Abkürzungen sollten erkennbar sein und gern erläutert werden.
 - Das Arbeitsergebnis muss inklusive dem Sourcecode komplett bereitgestellt werden
 
-## Todo List Aktzeptanzkriterien
+## Todo List 
 
-- [ ] Eingabe Darlehensbetrag
-- [ ] Eingabe Sollzinssatz
-- [ ] Eingabe anfängliche Tilgung (%)
+### Aktzeptanzkriterien
+
+- [X] Eingabe Darlehensbetrag
+- [X] Eingabe Sollzinssatz
+- [X] Eingabe anfängliche Tilgung (%)
+- [X] Einheiten der Eingaben
 - [ ] Optional: Eingabe Zinsbindungsdauer zwischen 1 - 30 Jahren
 - [ ] Klick auf Button “Berechnen” => Anzeige dem Nutzer die monatliche Rate
 - [ ] Optional: Anzeige Restschuld am Ende der Zinsbindung angezeigt
@@ -34,13 +37,41 @@ Als Sparkassenkunde möchte ich einen Tilgungsplan für Kredite berechnen könne
 - [ ] Änderung der Eingabeparameter => Berechnung automatisch aktualisiert
 - [ ] Tilgungsrechner ist sowohl mobil als auch per Desktop System verwendbar
 
-## Todo Weiteres
+- [ ] Einschränkung der Eingabe-Parameter
+- [ ] Darstellung der Zahlen 250007 => 250.007
 
-- [ ] stylesheet S-Com erfragen oder an der Webseite ausrichten
-- [ ] die Rechnungsparameter sollen als URL-Parameter übergeben werden können
+### NextJS 
+
+Wie kann ich die Technologie einbinden? 
+Übergabe der "GET" Parameter?
+
+- [ ] NextJS installieren
+
+### Die App soll auf unterschiedlichen Systemen laufen (Windows, Linux, Mac) Ingolf fragen?
+
+- [ ] Docker Container erstellen
+
+### Styling
+
 - [ ] MUI als ReactJS Komponenten verwenden <https://mui.com/getting-started/usage/>
-- [ ] Die App soll auf unterschiedlichen Systemen laufen (Windows, Linux, Mac) Ingolf fragen?
+- [ ] Styling an S-Com ausrichten, 
+      anhand der der Webseite ( oder stylesheet S-Com erfragen )
 
-- Beispiele:
-  <https://www.sparkasse.de/rechner/autokostenrechner.html>
-  <https://www.sparkasse.de/rechner/autokostenrechner.html>
+### Bereitstellung des Codes
+
+- [ ] Upload auf GitHub
+- [ ] Erstellung 
+
+### Feedback
+
+- [ ] Docker & Tilgungsrechner von Ingolf 
+- [ ] React und Programmier-/Architekturkonzepte (Clean Code, etc.)
+
+### Weiteres
+
+- ggf. Test schreiben
+- ggf. Barrierefreiheit Testen
+
+> Beispiele:
+> <https://www.sparkasse.de/rechner/autokostenrechner.html>
+> <https://www.sparkasse.de/rechner/autokostenrechner.html>
