@@ -22,7 +22,7 @@ Als Sparkassenkunde möchte ich einen Tilgungsplan für Kredite berechnen könne
 - Die Implementierung kann in Teilen prototypenhaft erfolgen, soll aber wesentliche Programmier-/Architekturkonzepte erkennen lassen. Abkürzungen sollten erkennbar sein und gern erläutert werden.
 - Das Arbeitsergebnis muss inklusive dem Sourcecode komplett bereitgestellt werden
 
-## Todo List 
+## Todo List
 
 ### Aktzeptanzkriterien
 
@@ -31,40 +31,43 @@ Als Sparkassenkunde möchte ich einen Tilgungsplan für Kredite berechnen könne
 - [X] Eingabe anfängliche Tilgung (%)
 - [X] Einheiten der Eingaben
 - [ ] Optional: Eingabe Zinsbindungsdauer zwischen 1 - 30 Jahren
-- [ ] Klick auf Button “Berechnen” => Anzeige dem Nutzer die monatliche Rate
+- [X] Klick auf Button “Berechnen” => Anzeige dem Nutzer die monatliche Rate
 - [ ] Optional: Anzeige Restschuld am Ende der Zinsbindung angezeigt
-- [ ] Anzeige Tilgungsplan mit jährlicher Aufgliederung von Jahr, Rate, Zinsanteil, Tilgungsanteil und Restschuld
-- [ ] Änderung der Eingabeparameter => Berechnung automatisch aktualisiert
+- [X] Anzeige Tilgungsplan mit jährlicher Aufgliederung von Jahr, Rate, Zinsanteil, Tilgungsanteil und Restschuld
+- [X] Änderung der Eingabeparameter => Berechnung automatisch aktualisiert
 - [ ] Tilgungsrechner ist sowohl mobil als auch per Desktop System verwendbar
 
 - [ ] Einschränkung der Eingabe-Parameter
 - [ ] Darstellung der Zahlen 250007 => 250.007
+- [ ] Was passiert nach dem Klick auf den Button “Berechnen”?
+      Verschwinden oder Einklappen?
 
-### NextJS 
+### NextJS
 
-Wie kann ich die Technologie einbinden? 
+Wie kann ich die Technologie einbinden?
 Übergabe der "GET" Parameter?
 
 - [ ] NextJS installieren
 
-### Die App soll auf unterschiedlichen Systemen laufen (Windows, Linux, Mac) Ingolf fragen?
+### Die App soll auf unterschiedlichen Systemen laufen
 
-- [ ] Docker Container erstellen
+- [X] Ingolf fragen?
+- Windows, Linux, Mac => ggf. Docker Container erstellen
 
 ### Styling
 
 - [ ] MUI als ReactJS Komponenten verwenden <https://mui.com/getting-started/usage/>
-- [ ] Styling an S-Com ausrichten, 
+- [ ] Styling an S-Com ausrichten,
       anhand der der Webseite ( oder stylesheet S-Com erfragen )
 
 ### Bereitstellung des Codes
 
 - [ ] Upload auf GitHub
-- [ ] Erstellung 
+- [ ] Erstellung
 
 ### Feedback
 
-- [ ] Docker & Tilgungsrechner von Ingolf 
+- [ ] Docker & Tilgungsrechner von Ingolf
 - [ ] React und Programmier-/Architekturkonzepte (Clean Code, etc.)
 
 ### Weiteres

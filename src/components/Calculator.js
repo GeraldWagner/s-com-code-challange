@@ -2,6 +2,16 @@ import { useState } from "react";
 import { calculateYearlyDepts } from "./CalculationInterest";
 import CalculatorTable from "./CalculatorTable";
 
+import {
+    Button,
+    Grid,
+    Box,
+    TextField,
+    InputAdornment,
+    Stack,
+    Container,
+} from "@mui/material";
+
 import "./Calculator.scss";
 
 const Calculator = () => {
@@ -36,9 +46,7 @@ const Calculator = () => {
     };
 
     const calculateRate = () => {
-        setShowCalculation(true);
-        console.table(tilgungsplan);
-        console.log(monthlyRate);
+        setShowCalculation((prev) => !prev);
     };
 
     const { tilgungsplan, monthlyRate } = calculateYearlyDepts(
@@ -48,50 +56,130 @@ const Calculator = () => {
         years
     );
 
-    return (
-        <div className="calculator">
-            <h1>Tilgungsplan</h1>
-            <div className="loan-container">
-                <label htmlFor="loan">Darlehenssumme</label>
-                <input
+    const CalculatorAngaben = () => {
+        return (
+            <>
+                <h2>Angaben</h2>
+                <TextField
+                    label="Darlehenssumme"
+                    sx={{ m: 1, width: "100%" }}
                     type="number"
                     name="loan"
                     value={loan}
                     onChange={changeLoan}
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">€</InputAdornment>
+                        ),
+                    }}
                 />
-                {" €"}
-            </div>
+                <Stack>
+                    <TextField
+                        label="Sollzins"
+                        sx={{ m: 1, width: "100%" }}
+                        type="number"
+                        name="debit-interest"
+                        value={debitInterest}
+                        onChange={changeDebitInterest}
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    %
+                                </InputAdornment>
+                            ),
+                        }}
+                    />
+                    <TextField
+                        label="Tilgung"
+                        sx={{ m: 1, width: "100%" }}
+                        type="number"
+                        name="repayment"
+                        value={repayment}
+                        onChange={changeRepayment}
+                        InputProps={{
+                            startAdornment: (
+                                <InputAdornment position="start">
+                                    %
+                                </InputAdornment>
+                            ),
+                        }}
+                    />
+                </Stack>
+            </>
+        );
+    };
 
-            <div className="debit-interest-container">
-                <label htmlFor="debit-interest">Sollzins</label>
-                <input
-                    type="number"
-                    name="debit-interest"
-                    value={debitInterest}
-                    onChange={changeDebitInterest}
-                />
-                {" %"}
-            </div>
+    const CalculatorErgebnis = () => {
+        return (
+            <>
+                <Stack
+                    sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        height: "100%",
+                        borderRadius: 1,
+                        gap: 1,
+                    }}
+                >
+                    <h2>Ergebnis</h2>
 
-            <div className="repayment-container">
-                <label htmlFor="repayment">Tilgung</label>
-                <input
-                    type="number"
-                    name="repayment"
-                    value={repayment}
-                    onChange={changeRepayment}
-                />
-                {" %"}
-            </div>
+                    <Stack
+                        sx={{ m: 1 }}
+                        direction="row"
+                        justifyContent="space-between"
+                    >
+                        <div>Monatliche Rate:</div>
+                        <div>{monthlyRate.toFixed(2)} €</div>
+                    </Stack>
+                    <Stack
+                        sx={{ m: 1 }}
+                        direction="row"
+                        justifyContent="space-between"
+                    >
+                        <div>Laufzeit:</div>
+                        <div>{years} Jahre</div>
+                    </Stack>
 
-            <button onClick={calculateRate}>Berechnen</button>
+                    <Button
+                        variant="contained"
+                        size="large"
+                        onClick={calculateRate}
+                        sx={{ m: 1, mt: "auto" }}
+                    >
+                        {showCalculation ? "Ausblenden" : "Berechnen"}
+                    </Button>
+                </Stack>
+            </>
+        );
+    };
 
-            <div className="calculation-container">
+    return (
+        <Container>
+            <Box>
+                <h1>Tilgungsplan</h1>
+            </Box>
+
+            <Grid
+                container
+                justifyContent="space-between"
+                className="calculator"
+            >
+                <Grid item xs={12} sm={5}>
+                    <CalculatorAngaben />
+                </Grid>
+
+                <Grid item xs={12} sm={6}>
+                    <CalculatorErgebnis />
+                </Grid>
+            </Grid>
+
+            <Box className="calculation-container">
                 {showCalculation && (
                     <CalculatorTable tilgungsplan={tilgungsplan} />
                 )}
-            </div>
-        </div>
+            </Box>
+        </Container>
     );
 };
+
 export default Calculator;

@@ -1,37 +1,51 @@
 import React from "react";
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+} from "@mui/material";
 
 const CalculatorTable = ({ tilgungsplan }) => {
     const tilgungsplanHeader = Object.keys(tilgungsplan[0]);
 
     return (
-        <>
-            <table>
-                {tilgungsplan && (
-                    <>
-                        <thead>
-                            <tr>
-                                {tilgungsplanHeader.map((row) => (
-                                    <td key={`${row}`}>{row}</td>
-                                ))}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {tilgungsplan.map((yearlyTilgung) => (
-                                <tr key={`table-${yearlyTilgung.Jahr}`}>
-                                    <td>{yearlyTilgung.Jahr}</td>
-                                    <td>{yearlyTilgung.Zinssatz}</td>
-                                    <td>{yearlyTilgung.Tilgungssatz}</td>
-                                    <td>{yearlyTilgung.Rate}</td>
-                                    <td>{yearlyTilgung.Zinsanteil}</td>
-                                    <td>{yearlyTilgung.Tilgungsanteil}</td>
-                                    <td>{yearlyTilgung.Restschuld}</td>
-                                </tr>
+        <TableContainer>
+            {tilgungsplan && (
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            {tilgungsplanHeader.map((row) => (
+                                <TableCell key={`th-${row}`}>{row}</TableCell>
                             ))}
-                        </tbody>
-                    </>
-                )}
-            </table>
-        </>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {tilgungsplan.map((yearlyTilgung) => (
+                            <TableRow key={`tr-${yearlyTilgung.Jahr}`}>
+                                <TableCell>{yearlyTilgung.Jahr}</TableCell>
+                                <TableCell>{yearlyTilgung.Zinssatz}</TableCell>
+                                <TableCell>
+                                    {yearlyTilgung.Tilgungssatz}
+                                </TableCell>
+                                <TableCell>{yearlyTilgung.Rate}</TableCell>
+                                <TableCell>
+                                    {yearlyTilgung.Zinsanteil}
+                                </TableCell>
+                                <TableCell>
+                                    {yearlyTilgung.Tilgungsanteil}
+                                </TableCell>
+                                <TableCell>
+                                    {yearlyTilgung.Restschuld}
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            )}
+        </TableContainer>
     );
 };
 export default CalculatorTable;
