@@ -35,12 +35,7 @@ Als Sparkassenkunde möchte ich einen Tilgungsplan für Kredite berechnen könne
 - [ ] Optional: Anzeige Restschuld am Ende der Zinsbindung angezeigt
 - [X] Anzeige Tilgungsplan mit jährlicher Aufgliederung von Jahr, Rate, Zinsanteil, Tilgungsanteil und Restschuld
 - [X] Änderung der Eingabeparameter => Berechnung automatisch aktualisiert
-- [ ] Tilgungsrechner ist sowohl mobil als auch per Desktop System verwendbar
-
-- [ ] Einschränkung der Eingabe-Parameter
-- [ ] Darstellung der Zahlen 250007 => 250.007
-- [ ] Was passiert nach dem Klick auf den Button “Berechnen”?
-      Verschwinden oder Einklappen?
+- [X] Tilgungsrechner ist sowohl mobil als auch per Desktop System verwendbar
 
 ### NextJS
 
@@ -51,30 +46,39 @@ Wie kann ich die Technologie einbinden?
 
 ### Die App soll auf unterschiedlichen Systemen laufen
 
-- [X] Ingolf fragen?
-- Windows, Linux, Mac => ggf. Docker Container erstellen
+- Windows, Linux, Mac? => ggf. Docker Container erstellen
 
 ### Styling
 
-- [ ] MUI als ReactJS Komponenten verwenden <https://mui.com/getting-started/usage/>
+- [X] MUI als ReactJS Komponenten verwenden <https://mui.com/getting-started/usage/>
 - [ ] Styling an S-Com ausrichten,
       anhand der der Webseite ( oder stylesheet S-Com erfragen )
 
 ### Bereitstellung des Codes
 
-- [ ] Upload auf GitHub
-- [ ] Erstellung
+- [X] Upload auf GitHub
+- [ ] Erstellung Unterseite im WWW
 
 ### Feedback
 
-- [ ] Docker & Tilgungsrechner von Ingolf
-- [ ] React und Programmier-/Architekturkonzepte (Clean Code, etc.)
+- [ ] Tilgungsrechner
+- [ ] ggf. Docker
+- [ ] React und Programmier-/Architekturkonzepte ( Clean Code, etc. )
 
 ### Weiteres
+
+- [ ] Einschränkung der Eingabe-Parameter
+- [ ] Darstellung der Zahlen 250007 => 250.007
+- [ ] Was passiert nach dem Klick auf den Button “Berechnen”?
+      Verschwinden oder Einklappen?m
 
 - ggf. Test schreiben
 - ggf. Barrierefreiheit Testen
 
-> Beispiele:
+> ### Ressourcen
+>
+> Beispiele:  
 > <https://www.sparkasse.de/rechner/autokostenrechner.html>
 > <https://www.sparkasse.de/rechner/autokostenrechner.html>
+>
+> MUI: <https://mui.com/material-ui/react-select/>
