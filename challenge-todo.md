@@ -82,3 +82,9 @@ Wie kann ich die Technologie einbinden?
 > <https://www.sparkasse.de/rechner/autokostenrechner.html>
 >
 > MUI: <https://mui.com/material-ui/react-select/>
+> Calculation: <https://www.allianz.de/recht-und-eigentum/baufinanzierung/annuitaetendarlehen/>
+> NextJS: <https://nextjs.org/>
+
+### NOTES
+
+npm install -D sass
