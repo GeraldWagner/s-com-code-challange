@@ -12,46 +12,25 @@ export function calculateYearlyDepts(
     const date = new Date();
     const year = date.getFullYear();
 
-    const monthLeft = 12 - (date.getMonth() + 1);
     const monthRate = initRate / 12;
+    const monthLeftFistYear = 12 - (date.getMonth() + 1);
 
-    const tilgungsplanMonth = {
-        Jahr: year,
-        Zinssatz: zinssatz + " %",
-        Tilgungssatz: 0,
-        Rate: 0,
-        Zinsanteil: 0,
-        Tilgungsanteil: 0,
-        Restschuld: 0,
-    };
+    const tilgungsplanYear = [];
 
-    for (let month = 0; month <= monthLeft; month++) {
-        const monthZinsanteil = (restschuld / 100 / 12) * zinssatz;
-        const monthTilgungsanteil = monthRate - monthZinsanteil;
-        const monthTilgungssatz = (monthTilgungsanteil / restschuld / 12) * 100;
+    /* First Year */
+    const tilgungsplanFirstYear = calculateTilgungsplanByMonth(
+        year,
+        zinssatz,
+        monthLeftFistYear,
+        monthRate,
+        restschuld
+    );
 
-        restschuld = restschuld - monthTilgungsanteil;
+    restschuld = tilgungsplanFirstYear.rs;
+    tilgungsplanYear.push(tilgungsplanFirstYear.tp);
 
-        tilgungsplanMonth.Tilgungssatz += monthTilgungssatz;
-        tilgungsplanMonth.Rate += monthRate;
-        tilgungsplanMonth.Zinsanteil += monthZinsanteil;
-        tilgungsplanMonth.Tilgungsanteil += monthTilgungsanteil;
-        tilgungsplanMonth.Restschuld = restschuld;
-    }
-
-    const tilgungsplanYear = [
-        {
-            Jahr: year,
-            Zinssatz: zinssatz + " %",
-            Tilgungsanteil: tilgungsplanMonth.Tilgungsanteil.toFixed(2) + " €",
-            Rate: tilgungsplanMonth.Rate.toFixed(2) + " €",
-            Zinsanteil: tilgungsplanMonth.Zinsanteil.toFixed(2) + " €",
-            Tilgungssatz: tilgungsplanMonth.Tilgungssatz.toFixed(2) + " %",
-            Restschuld: tilgungsplanMonth.Restschuld.toFixed(2) + " €",
-        },
-    ];
-
-    for (let jahr = 1; jahr <= laufzeit; jahr++) {
+    /* Middle Years */
+    for (let jahr = 1; jahr < laufzeit; jahr++) {
         const yearZinsanteil = (restschuld / 100) * zinssatz;
         const yearTilgungsanteil = initRate - yearZinsanteil;
         const yearTilgungssatzneu = (yearTilgungsanteil / restschuld) * 100;
@@ -69,5 +48,65 @@ export function calculateYearlyDepts(
         });
     }
 
+    /* Last Year */
+    const monthLeftLastYear = 12 - monthLeftFistYear;
+
+    if (monthLeftLastYear !== 0) {
+        const tilgungsplanLastYear = calculateTilgungsplanByMonth(
+            year,
+            zinssatz,
+            monthLeftLastYear,
+            monthRate,
+            restschuld
+        );
+
+        tilgungsplanYear.push(tilgungsplanLastYear.tp);
+        restschuld = tilgungsplanLastYear.rs;
+    }
+
     return { tilgungsplan: tilgungsplanYear, monthlyRate: monthRate };
+}
+
+function calculateTilgungsplanByMonth(
+    jahr,
+    zinssatz,
+    monthLaufzeit,
+    monthRate,
+    restschuld
+) {
+    let tilgungsplan = {
+        Jahr: jahr,
+        Zinssatz: zinssatz + " %",
+        Tilgungssatz: 0,
+        Rate: 0,
+        Zinsanteil: 0,
+        Tilgungsanteil: 0,
+        Restschuld: 0,
+    };
+
+    for (let month = 0; month <= monthLaufzeit; month++) {
+        const monthZinsanteil = (restschuld / 100 / 12) * zinssatz;
+        const monthTilgungsanteil = monthRate - monthZinsanteil;
+        const monthTilgungssatz = (monthTilgungsanteil / restschuld / 12) * 100;
+
+        restschuld = restschuld - monthTilgungsanteil;
+
+        tilgungsplan.Tilgungssatz += monthTilgungssatz;
+        tilgungsplan.Rate += monthRate;
+        tilgungsplan.Zinsanteil += monthZinsanteil;
+        tilgungsplan.Tilgungsanteil += monthTilgungsanteil;
+        tilgungsplan.Restschuld = restschuld;
+    }
+
+    tilgungsplan = {
+        Jahr: tilgungsplan.Jahr,
+        Zinssatz: tilgungsplan.Zinssatz,
+        Tilgungssatz: tilgungsplan.Tilgungssatz.toFixed(2) + " %",
+        Rate: tilgungsplan.Rate.toFixed(2) + " €",
+        Zinsanteil: tilgungsplan.Zinsanteil.toFixed(2) + " €",
+        Tilgungsanteil: tilgungsplan.Tilgungsanteil.toFixed(2) + " €",
+        Restschuld: tilgungsplan.Restschuld.toFixed(2) + " €",
+    };
+
+    return { tp: tilgungsplan, rs: restschuld };
 }

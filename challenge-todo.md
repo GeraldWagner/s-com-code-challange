@@ -53,6 +53,8 @@ Wie kann ich die Technologie einbinden?
 - [X] MUI als ReactJS Komponenten verwenden <https://mui.com/getting-started/usage/>
 - [ ] Styling an S-Com ausrichten,
       anhand der der Webseite ( oder stylesheet S-Com erfragen )
+      - [ ] Theming
+      - [ ] Font
 
 ### Bereitstellung des Codes
 
@@ -61,29 +63,41 @@ Wie kann ich die Technologie einbinden?
 
 ### Feedback
 
-- [ ] Tilgungsrechner
-- [ ] ggf. Docker
-- [ ] React und Programmier-/Architekturkonzepte ( Clean Code, etc. )
+- [ ] Tilgungsrechner > Mathematik überprüfen
+- [X] ggf. Docker
+- [ ] React und Programmier-/Architekturkonzepte > Clean Code, etc.
 
 ### Weiteres
 
-- [ ] Einschränkung der Eingabe-Parameter
-- [ ] Darstellung der Zahlen 250007 => 250.007
-- [ ] Was passiert nach dem Klick auf den Button “Berechnen”?
-      Verschwinden oder Einklappen?m
+- Interaktion
+  - [ ] Einschränkung der Eingabe-Parameter
+        Anderer Event als onChange?
+        Fehlermeldung, wenn Eingabe nicht zulässig?
+        Kalulation nur bei gültigen Eingaben?
+
+- Darstellung
+  - [ ] Darstellung der Zahlen 250007 => 250.007
+  - [ ] Was passiert nach dem Klick auf den Button “Berechnen”?
+        Verschwinden oder Einklappen?
+
+- Rechner
+  - [ ] Kalkulation auf FAZ Werte optimieren
+        Monate als Funktion extrahieren
+        ggf. mir Recursion
 
 - ggf. Test schreiben
 - ggf. Barrierefreiheit Testen
 
 > ### Ressourcen
 >
-> Beispiele:  
+> Rechner:
 > <https://www.sparkasse.de/rechner/autokostenrechner.html>
-> <https://www.sparkasse.de/rechner/autokostenrechner.html>
+> <https://finanzrechner-tilgung.faz.net/rechner3/faz/tilgungsrechner/>
 >
-> MUI: <https://mui.com/material-ui/react-select/>
-> Calculation: <https://www.allianz.de/recht-und-eigentum/baufinanzierung/annuitaetendarlehen/>
-> NextJS: <https://nextjs.org/>
+> MUI:            <https://mui.com/material-ui/react-select/>
+> Calculation:    <https://www.allianz.de/recht-und-eigentum/baufinanzierung/annuitaetendarlehen/>
+> NextJS:         <https://nextjs.org/>
+> Docker:         <https://github.com/vercel/next.js/tree/canary/examples/with-docker>
 
 ### NOTES
 
