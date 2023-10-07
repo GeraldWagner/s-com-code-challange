@@ -12,7 +12,7 @@ import {
     Container,
 } from "@mui/material";
 
-import "./Calculator.scss";
+import "../../styles/calculator.module.css";
 
 const Calculator = () => {
     const [loan, setLoan] = useState(250000);
