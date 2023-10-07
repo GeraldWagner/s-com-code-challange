@@ -10,7 +10,7 @@ export function calculateYearlyDepts(
     const initRate = initZinsanteil + initTilgungsanteil;
 
     const date = new Date();
-    const year = date.getFullYear();
+    let year = date.getFullYear();
 
     const monthRate = initRate / 12;
     const monthLeftFistYear = 12 - (date.getMonth() + 1);
@@ -28,6 +28,7 @@ export function calculateYearlyDepts(
 
     restschuld = tilgungsplanFirstYear.rs;
     tilgungsplanYear.push(tilgungsplanFirstYear.tp);
+    year++;
 
     /* Middle Years */
     for (let jahr = 1; jahr < laufzeit; jahr++) {
@@ -38,7 +39,7 @@ export function calculateYearlyDepts(
         restschuld = restschuld - yearTilgungsanteil;
 
         tilgungsplanYear.push({
-            Jahr: jahr + year,
+            Jahr: year,
             Zinssatz: zinssatz + " %",
             Tilgungssatz: yearTilgungssatzneu.toFixed(2) + " %",
             Rate: initRate.toFixed(2) + " €",
@@ -46,6 +47,7 @@ export function calculateYearlyDepts(
             Tilgungsanteil: yearTilgungsanteil.toFixed(2) + " €",
             Restschuld: restschuld.toFixed(2) + " €",
         });
+        year++;
     }
 
     /* Last Year */
