@@ -43,7 +43,7 @@ export default function Layout({ children, home }) {
                     </>
                 ) : (
                     <>
-                        <Link href="/calculator">
+                        <Link href="/tilgungs-rechner">
                             <Typography>Go to Calculator →</Typography>
                         </Link>
                     </>
