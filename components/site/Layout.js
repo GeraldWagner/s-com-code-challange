@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
-import Header from "./site/Header";
-import Footer from "./site/Footer";
+import Header from "./Header";
+import Footer from "./Footer";
 
 import { Typography, Stack } from "@mui/material";
 

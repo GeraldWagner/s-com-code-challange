@@ -1,9 +1,4 @@
-export function calculateYearlyDepts(
-    darlehenshoehe,
-    zinssatz,
-    tilgungssatz,
-    laufzeit
-) {
+const calculateDebts = (darlehenshoehe, zinssatz, tilgungssatz, laufzeit) => {
     let restschuld = darlehenshoehe;
     const initZinsanteil = (restschuld / 100) * zinssatz;
     const initTilgungsanteil = (restschuld / 100) * tilgungssatz;
@@ -67,7 +62,7 @@ export function calculateYearlyDepts(
     }
 
     return { tilgungsplan: tilgungsplanYear, monthlyRate: monthRate };
-}
+};
 
 function calculateTilgungsplanByMonth(
     jahr,
@@ -112,3 +107,5 @@ function calculateTilgungsplanByMonth(
 
     return { tp: tilgungsplan, rs: restschuld };
 }
+
+export default calculateDebts;

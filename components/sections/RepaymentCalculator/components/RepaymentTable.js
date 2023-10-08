@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import {
     Table,
     TableBody,
@@ -15,7 +16,7 @@ import {
     useMediaQuery,
 } from "@mui/material";
 
-const CalculatorTable = ({ tilgungsplan }) => {
+const RepaymentTable = ({ tilgungsplan }) => {
     const headerRow = Object.keys(tilgungsplan[0]);
 
     const theme = useTheme();
@@ -126,4 +127,4 @@ const CalculatorTable = ({ tilgungsplan }) => {
     );
 };
 
-export default CalculatorTable;
+export default RepaymentTable;
