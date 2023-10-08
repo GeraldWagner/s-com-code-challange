@@ -16,6 +16,14 @@ import {
     useMediaQuery,
 } from "@mui/material";
 
+const styles = {
+    formControl: {
+        width: "100%",
+        marginTop: 2,
+        marginBottom: 2,
+    },
+};
+
 const RepaymentTable = ({ tilgungsplan }) => {
     const headerRow = Object.keys(tilgungsplan[0]);
 
@@ -38,7 +46,7 @@ const RepaymentTable = ({ tilgungsplan }) => {
         return (
             <>
                 {isMobile && (
-                    <FormControl sx={{ m: 1, width: "100%" }}>
+                    <FormControl sx={styles.formControl}>
                         <InputLabel>Anzeige</InputLabel>
                         <Select
                             value={selectedColumn}
@@ -57,7 +65,7 @@ const RepaymentTable = ({ tilgungsplan }) => {
         );
     };
 
-    const ScomTableCell = ({ name, value }) => {
+    const RepaymentTableCell = ({ name, value }) => {
         const showCell =
             (isMobile && selectedColumn === name) ||
             (isMobile && name === "Restschuld") ||
@@ -77,7 +85,7 @@ const RepaymentTable = ({ tilgungsplan }) => {
                         <TableHead>
                             <TableRow>
                                 {headerRow.map((row) => (
-                                    <ScomTableCell
+                                    <RepaymentTableCell
                                         key={`th-${row}`}
                                         name={row}
                                         value={row}
@@ -88,32 +96,32 @@ const RepaymentTable = ({ tilgungsplan }) => {
                         <TableBody>
                             {tilgungsplan.map((yearlyTilgung) => (
                                 <TableRow key={`tr-${yearlyTilgung.Jahr}`}>
-                                    <ScomTableCell
+                                    <RepaymentTableCell
                                         name="Jahr"
                                         value={yearlyTilgung.Jahr}
                                     />
-                                    <ScomTableCell
+                                    <RepaymentTableCell
                                         name="Zinssatz"
                                         value={yearlyTilgung.Zinssatz}
                                     />
-                                    <ScomTableCell
+                                    <RepaymentTableCell
                                         name="Tilgungssatz"
                                         value={yearlyTilgung.Tilgungssatz}
                                     />
-                                    <ScomTableCell
+                                    <RepaymentTableCell
                                         name="Rate"
                                         value={yearlyTilgung.Rate}
                                     />
-                                    <ScomTableCell
+                                    <RepaymentTableCell
                                         name="Zinsanteil"
                                         value={yearlyTilgung.Zinsanteil}
                                     />
-                                    <ScomTableCell
+                                    <RepaymentTableCell
                                         name="Tilgungsanteil"
                                         value={yearlyTilgung.Tilgungsanteil}
                                     />
 
-                                    <ScomTableCell
+                                    <RepaymentTableCell
                                         name="Restschuld"
                                         value={yearlyTilgung.Restschuld}
                                     />

@@ -1,5 +1,24 @@
 import { Typography, Stack, Button } from "@mui/material";
 
+const styles = {
+    outer: {
+        display: "flex",
+        flexDirection: "column",
+        borderRadius: 1,
+        p: 4,
+        border: "1px solid #ccc",
+        gap: 1,
+    },
+    inner: {
+        marginBottom: 2,
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
+    button: {
+        marginTop: 1,
+        marginBottom: 2,
+    },
+};
 const ResultsDisplay = ({
     monthlyRate,
     years,
@@ -8,31 +27,13 @@ const ResultsDisplay = ({
 }) => {
     return (
         <>
-            <Stack
-                sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    height: "100%",
-                    borderRadius: 1,
-                    gap: 1,
-                }}
-            >
-                <Typography variant="h2">Ergebnis</Typography>
-
-                <Stack
-                    sx={{ m: 1 }}
-                    direction="row"
-                    justifyContent="space-between"
-                >
+            <Stack sx={styles.outer}>
+                <Stack sx={styles.inner}>
                     <Typography>Monatliche Rate:</Typography>
                     <Typography>{monthlyRate.toFixed(2)} €</Typography>
                 </Stack>
 
-                <Stack
-                    sx={{ m: 1 }}
-                    direction="row"
-                    justifyContent="space-between"
-                >
+                <Stack sx={styles.inner}>
                     <Typography>Laufzeit:</Typography>
                     <Typography>{years} Jahre</Typography>
                 </Stack>
@@ -41,7 +42,7 @@ const ResultsDisplay = ({
                     variant="contained"
                     size="large"
                     onClick={calculateRate}
-                    sx={{ m: 1, mt: "auto" }}
+                    sx={styles.button}
                 >
                     {showCalculation ? "Ausblenden" : "Berechnen"}
                 </Button>

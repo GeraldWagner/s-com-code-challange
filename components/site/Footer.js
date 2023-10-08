@@ -1,8 +1,16 @@
 import React from "react";
-import styles from "../../styles/layout.module.css";
+import { Box } from "@mui/material";
+
+const styles = {
+    footer: {
+        backgroundColor: "#f5f5f5",
+        minHeight: 100,
+        p: 2,
+    },
+};
 
 const Footer = ({ children, home }) => {
-    return <footer className={styles.footer}>{children}</footer>;
+    return <Box sx={styles.footer}>{children}</Box>;
 };
 
 export default Footer;

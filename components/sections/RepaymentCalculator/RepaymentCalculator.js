@@ -3,7 +3,14 @@ import { useState } from "react";
 import { calculateYearlyDepts } from "./services";
 import { CalculatorTable, LoanInputForm, ResultsDisplay } from "./components";
 
-import { Grid, Box, Container } from "@mui/material";
+import { Grid, Box, Container, Typography } from "@mui/material";
+
+const styles = {
+    h2: {
+        marginBottom: 2,
+        marginTop: 2,
+    },
+};
 
 const RepaymentCalculator = () => {
     const [loan, setLoan] = useState(250000);
@@ -55,6 +62,10 @@ const RepaymentCalculator = () => {
                 className="calculator"
             >
                 <Grid item xs={12} sm={5}>
+                    <Typography variant="h2" sx={styles.h2}>
+                        Angaben
+                    </Typography>
+
                     <LoanInputForm
                         loan={loan}
                         debitInterest={debitInterest}
@@ -66,6 +77,10 @@ const RepaymentCalculator = () => {
                 </Grid>
 
                 <Grid item xs={12} sm={6}>
+                    <Typography variant="h2" sx={styles.h2}>
+                        Ergebnis
+                    </Typography>
+
                     <ResultsDisplay
                         monthlyRate={monthlyRate}
                         years={years}

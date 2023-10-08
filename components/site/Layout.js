@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -8,14 +9,14 @@ import { Typography, Stack } from "@mui/material";
 const name = "Gerald Wagner";
 export const siteTitle = `S-Com: Coding Challenge`;
 
+const styles = {
+    layout: { flexDirection: "column", minHeight: "100vh" },
+    main: { flexGrow: 1 },
+};
+
 export default function Layout({ children, home }) {
     return (
-        <Stack
-            direction="column"
-            sx={{
-                minHeight: "100vh",
-            }}
-        >
+        <Stack sx={styles.layout}>
             <Head>
                 <link rel="icon" href="/images/favicon-32x32.png" />
                 <meta name="description" content="Coding Challenge for S-Com" />
@@ -50,7 +51,7 @@ export default function Layout({ children, home }) {
                 )}
             </Header>
 
-            <main style={{ flexGrow: 1 }}>{children}</main>
+            <main style={styles.main}>{children}</main>
             <Footer>
                 <Typography>Teilnehmer: {name}</Typography>
             </Footer>

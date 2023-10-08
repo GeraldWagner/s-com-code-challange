@@ -1,4 +1,12 @@
-import { Typography, TextField, InputAdornment } from "@mui/material";
+import { TextField, InputAdornment } from "@mui/material";
+
+const styles = {
+    form: {
+        width: "100%",
+        marginTop: 1,
+        marginBottom: 1,
+    },
+};
 
 const LoanInputForm = ({
     loan,
@@ -10,11 +18,9 @@ const LoanInputForm = ({
 }) => {
     return (
         <>
-            <Typography variant="h2">Angaben</Typography>
-
             <TextField
                 label="Darlehenssumme"
-                sx={{ m: 1, width: "100%" }}
+                sx={styles.form}
                 type="number"
                 name="loan"
                 value={loan}
@@ -28,7 +34,7 @@ const LoanInputForm = ({
 
             <TextField
                 label="Sollzins"
-                sx={{ m: 1, width: "100%" }}
+                sx={styles.form}
                 type="number"
                 name="debit-interest"
                 value={debitInterest}
@@ -42,7 +48,7 @@ const LoanInputForm = ({
 
             <TextField
                 label="Tilgung"
-                sx={{ m: 1, width: "100%" }}
+                sx={styles.form}
                 type="number"
                 name="repayment"
                 value={repayment}
