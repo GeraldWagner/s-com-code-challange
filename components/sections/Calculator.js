@@ -10,6 +10,7 @@ import {
     InputAdornment,
     Stack,
     Container,
+    Typography,
 } from "@mui/material";
 
 import "../../styles/calculator.module.css";
@@ -59,7 +60,7 @@ const Calculator = () => {
     const CalculatorAngaben = () => {
         return (
             <>
-                <h2>Angaben</h2>
+                <Typography variant="h2">Angaben</Typography>
                 <TextField
                     label="Darlehenssumme"
                     sx={{ m: 1, width: "100%" }}
@@ -73,38 +74,32 @@ const Calculator = () => {
                         ),
                     }}
                 />
-                <Stack>
-                    <TextField
-                        label="Sollzins"
-                        sx={{ m: 1, width: "100%" }}
-                        type="number"
-                        name="debit-interest"
-                        value={debitInterest}
-                        onChange={changeDebitInterest}
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    %
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                    <TextField
-                        label="Tilgung"
-                        sx={{ m: 1, width: "100%" }}
-                        type="number"
-                        name="repayment"
-                        value={repayment}
-                        onChange={changeRepayment}
-                        InputProps={{
-                            startAdornment: (
-                                <InputAdornment position="start">
-                                    %
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                </Stack>
+                <TextField
+                    label="Sollzins"
+                    sx={{ m: 1, width: "100%" }}
+                    type="number"
+                    name="debit-interest"
+                    value={debitInterest}
+                    onChange={changeDebitInterest}
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">%</InputAdornment>
+                        ),
+                    }}
+                />
+                <TextField
+                    label="Tilgung"
+                    sx={{ m: 1, width: "100%" }}
+                    type="number"
+                    name="repayment"
+                    value={repayment}
+                    onChange={changeRepayment}
+                    InputProps={{
+                        startAdornment: (
+                            <InputAdornment position="start">%</InputAdornment>
+                        ),
+                    }}
+                />
             </>
         );
     };
@@ -121,23 +116,23 @@ const Calculator = () => {
                         gap: 1,
                     }}
                 >
-                    <h2>Ergebnis</h2>
+                    <Typography variant="h2">Ergebnis</Typography>
 
                     <Stack
                         sx={{ m: 1 }}
                         direction="row"
                         justifyContent="space-between"
                     >
-                        <div>Monatliche Rate:</div>
-                        <div>{monthlyRate.toFixed(2)} €</div>
+                        <Typography>Monatliche Rate:</Typography>
+                        <Typography>{monthlyRate.toFixed(2)} €</Typography>
                     </Stack>
                     <Stack
                         sx={{ m: 1 }}
                         direction="row"
                         justifyContent="space-between"
                     >
-                        <div>Laufzeit:</div>
-                        <div>{years} Jahre</div>
+                        <Typography>Laufzeit:</Typography>
+                        <Typography>{years} Jahre</Typography>
                     </Stack>
 
                     <Button
@@ -155,10 +150,6 @@ const Calculator = () => {
 
     return (
         <Container>
-            <Box>
-                <h1>Tilgungsplan</h1>
-            </Box>
-
             <Grid
                 container
                 justifyContent="space-between"

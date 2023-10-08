@@ -1,17 +1,16 @@
-import Head from "next/head";
-import Layout, { siteTitle } from "../components/layout";
+import Layout from "../components/layout";
+import Section from "../components/site/Section";
 import Calculator from "../components/sections/Calculator";
-import utilStyles from "../styles/utils.module.css";
+
+import { Typography } from "@mui/material";
 
 export default function RepaymentCalculator() {
     return (
         <Layout>
-            <Head>
-                <title>{siteTitle}</title>
-            </Head>
-            <section className={utilStyles.headingMd}>
+            <Section>
+                <Typography variant="h1">Tilgungsplan</Typography>
                 <Calculator />
-            </section>
+            </Section>
         </Layout>
     );
 }
