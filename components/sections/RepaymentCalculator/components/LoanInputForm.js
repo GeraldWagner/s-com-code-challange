@@ -1,7 +1,8 @@
 import { TextField, InputAdornment } from "@mui/material";
+import NumberField from "../../../components/Inputs/NumberField";
 
 const styles = {
-    form: {
+    input: {
         width: "100%",
         marginTop: 1,
         marginBottom: 1,
@@ -15,49 +16,39 @@ const LoanInputForm = ({
     changeDebitInterest,
     repayment,
     changeRepayment,
+    error,
+    setError,
 }) => {
     return (
         <>
-            <TextField
-                label="Darlehenssumme"
-                sx={styles.form}
-                type="number"
-                name="loan"
+            <NumberField
                 value={loan}
-                onChange={changeLoan}
-                InputProps={{
-                    startAdornment: (
-                        <InputAdornment position="start">€</InputAdornment>
-                    ),
-                }}
+                changeValue={changeLoan}
+                label={"Darlehenssumme"}
+                sx={styles.input}
+                error={error}
+                setError={setError}
+                adornment="€"
             />
 
-            <TextField
-                label="Sollzins"
-                sx={styles.form}
-                type="number"
-                name="debit-interest"
+            <NumberField
                 value={debitInterest}
-                onChange={changeDebitInterest}
-                InputProps={{
-                    startAdornment: (
-                        <InputAdornment position="start">%</InputAdornment>
-                    ),
-                }}
+                changeValue={changeDebitInterest}
+                label={"Sollzins"}
+                sx={styles.input}
+                error={error}
+                setError={setError}
+                adornment="%"
             />
 
-            <TextField
-                label="Tilgung"
-                sx={styles.form}
-                type="number"
-                name="repayment"
+            <NumberField
                 value={repayment}
-                onChange={changeRepayment}
-                InputProps={{
-                    startAdornment: (
-                        <InputAdornment position="start">%</InputAdornment>
-                    ),
-                }}
+                changeValue={changeRepayment}
+                label={"Tilgung"}
+                sx={styles.input}
+                error={error}
+                setError={setError}
+                adornment="%"
             />
         </>
     );

@@ -36,11 +36,8 @@ const RepaymentTable = ({ tilgungsplan }) => {
     }, []);
 
     const ColumnSelect = () => {
-        const handleChange = (event) => {
-            const {
-                target: { value },
-            } = event;
-            setSelectedColumn(value);
+        const changeColumnSelect = (event) => {
+            setSelectedColumn(event.target.value);
         };
 
         return (
@@ -50,7 +47,7 @@ const RepaymentTable = ({ tilgungsplan }) => {
                         <InputLabel>Anzeige</InputLabel>
                         <Select
                             value={selectedColumn}
-                            onChange={handleChange}
+                            onChange={changeColumnSelect}
                             input={<OutlinedInput label="Anzeige" />}
                         >
                             {headerRow.map((column) => (
