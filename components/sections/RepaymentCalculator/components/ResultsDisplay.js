@@ -24,6 +24,7 @@ const ResultsDisplay = ({
     years,
     showCalculation,
     calculateRate,
+    error,
 }) => {
     return (
         <>
@@ -43,6 +44,7 @@ const ResultsDisplay = ({
                     size="large"
                     onClick={calculateRate}
                     sx={styles.button}
+                    disabled={error && !showCalculation}
                 >
                     {showCalculation ? "Ausblenden" : "Berechnen"}
                 </Button>
