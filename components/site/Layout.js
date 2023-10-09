@@ -1,7 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
 
-import Header from "./Header";
 import Footer from "./Footer";
 import Navi from "./Navi";
 
@@ -15,7 +14,7 @@ const styles = {
     main: { flexGrow: 1 },
 };
 
-export default function Layout({ children, home }) {
+export default function Layout({ children }) {
     return (
         <Stack sx={styles.layout}>
             <Head>
@@ -33,10 +32,18 @@ export default function Layout({ children, home }) {
                     rel="stylesheet"
                 />
             </Head>
+
             <Navi />
+
             <main style={styles.main}>{children}</main>
+
             <Footer>
-                <Typography>Teilnehmer: {name}</Typography>
+                <Typography variant="caption" display="block">
+                    {siteTitle}
+                </Typography>
+                <Typography variant="caption" display="block">
+                    Teilnehmer: {name}
+                </Typography>
             </Footer>
         </Stack>
     );

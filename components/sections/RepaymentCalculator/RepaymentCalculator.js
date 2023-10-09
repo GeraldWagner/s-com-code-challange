@@ -57,7 +57,7 @@ const RepaymentCalculator = () => {
                 className="calculator"
                 spacing={4}
             >
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} md={6}>
                     <Typography variant="h2" sx={styles.h2}>
                         Angaben
                     </Typography>
@@ -74,7 +74,7 @@ const RepaymentCalculator = () => {
                     />
                 </Grid>
 
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} md={6}>
                     <Typography variant="h2" sx={styles.h2}>
                         Ergebnis
                     </Typography>

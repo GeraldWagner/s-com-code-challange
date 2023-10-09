@@ -5,7 +5,8 @@ const styles = {
     footer: {
         backgroundColor: "#f5f5f5",
         minHeight: 100,
-        p: 2,
+        p: 3,
+        paddingLeft: 5,
     },
 };
 
