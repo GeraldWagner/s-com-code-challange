@@ -33,22 +33,7 @@ export default function Layout({ children, home }) {
                     rel="stylesheet"
                 />
             </Head>
-            <Navi>
-                {!home ? (
-                    <>
-                        <Link href="/">
-                            <Typography>← Back to home</Typography>
-                        </Link>
-                    </>
-                ) : (
-                    <>
-                        <Link href="/tilgungs-rechner">
-                            <Typography>Go to Calculator →</Typography>
-                        </Link>
-                    </>
-                )}
-            </Navi>
-
+            <Navi />
             <main style={styles.main}>{children}</main>
             <Footer>
                 <Typography>Teilnehmer: {name}</Typography>

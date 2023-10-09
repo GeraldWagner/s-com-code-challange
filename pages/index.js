@@ -1,5 +1,12 @@
-import { Layout } from "../components/site";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Home() {
-    return <Layout home></Layout>;
+    const router = useRouter();
+
+    useEffect(() => {
+        router.push("/tilgungs-rechner");
+    }, []);
+
+    return null;
 }
