@@ -15,11 +15,12 @@ const theme = createTheme({
         h1: {
             fontWeight: 600,
             textAlign: "center",
-            fontSize: "clamp(2rem, 5vw, 3.5rem)",
+            fontSize: "clamp(1.25rem, 3vw, 1.5rem)",
+            margin: "1rem 0",
         },
         h2: {
             fontWeight: 600,
-            fontSize: "clamp(1.5rem, 3vw, 2.5rem)",
+            fontSize: "clamp(1.125rem, 3vw, 1.25rem)",
         },
         h3: {
             fontWeight: 600,
