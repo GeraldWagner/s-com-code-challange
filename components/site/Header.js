@@ -2,18 +2,15 @@ import { Box } from "@mui/material";
 
 const styles = {
     header: {
+        minHeight: "clamp(100px, 15vw, 150px)",
+        p: 5,
         display: "flex",
         flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 1,
-        p: 2,
-        mb: 2,
-        backgroundColor: "red",
+        justifyContent: "flex-end",
     },
 };
 
-const Header = ({ children, home }) => {
+const Header = ({ children }) => {
     return <Box sx={styles.header}>{children}</Box>;
 };
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import Header from "./Header";
 import Footer from "./Footer";
+import Navi from "./Navi";
 
 import { Typography, Stack } from "@mui/material";
 
@@ -32,10 +33,7 @@ export default function Layout({ children, home }) {
                     rel="stylesheet"
                 />
             </Head>
-
-            <Header home>
-                <Typography>{siteTitle}</Typography>
-
+            <Navi>
                 {!home ? (
                     <>
                         <Link href="/">
@@ -49,7 +47,7 @@ export default function Layout({ children, home }) {
                         </Link>
                     </>
                 )}
-            </Header>
+            </Navi>
 
             <main style={styles.main}>{children}</main>
             <Footer>

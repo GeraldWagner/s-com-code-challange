@@ -1,16 +1,18 @@
-import { Layout, Section } from "../components/site";
+import { Layout, Header } from "../components/site";
 import { RepaymentCalculator } from "../components/sections/RepaymentCalculator";
-
-import { Divider, Typography } from "@mui/material";
+import { Typography, Container } from "@mui/material";
+import { DividerLg } from "../components/components/Dividers";
 
 export default function RepaymentCalculatorPage() {
     return (
         <Layout>
-            <Section>
+            <Header title="Tilgungs Rechner">
                 <Typography variant="h1">Tilgungs Rechner</Typography>
-                <Divider />
+            </Header>
+            <Container maxWidth="lg">
+                <DividerLg />
                 <RepaymentCalculator />
-            </Section>
+            </Container>
         </Layout>
     );
 }

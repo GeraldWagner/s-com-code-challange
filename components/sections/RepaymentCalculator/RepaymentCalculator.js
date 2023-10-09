@@ -1,9 +1,11 @@
 import { useState } from "react";
 
-import { calculateYearlyDepts } from "./services";
 import { CalculatorTable, LoanInputForm, ResultsDisplay } from "./components";
+import { Grid, Box, Container, Typography } from "@mui/material";
 import { SubmitButton } from "../../components/Buttons";
-import { Grid, Box, Container, Typography, Divider } from "@mui/material";
+import { DividerLg } from "../../components/Dividers";
+
+import { calculateYearlyDepts } from "./services";
 
 const styles = {
     h2: {
@@ -93,7 +95,7 @@ const RepaymentCalculator = () => {
             <Box className="calculation-container">
                 {showCalculation && (
                     <Grid>
-                        <Divider />
+                        <DividerLg />
                         <Typography variant="h2" sx={styles.h2}>
                             Überblick
                         </Typography>
