@@ -1,5 +1,7 @@
-import { TextField, InputAdornment } from "@mui/material";
-import NumberField from "../../../components/Inputs/NumberField";
+import {
+    NumberFieldPercentage,
+    NumberFieldEuro,
+} from "../../../components/Inputs";
 
 const styles = {
     input: {
@@ -21,34 +23,31 @@ const LoanInputForm = ({
 }) => {
     return (
         <>
-            <NumberField
+            <NumberFieldEuro
                 value={loan}
                 changeValue={changeLoan}
                 label={"Darlehenssumme"}
                 sx={styles.input}
                 error={error}
                 setError={setError}
-                adornment="€"
             />
 
-            <NumberField
+            <NumberFieldPercentage
                 value={debitInterest}
                 changeValue={changeDebitInterest}
                 label={"Sollzins"}
                 sx={styles.input}
                 error={error}
                 setError={setError}
-                adornment="%"
             />
 
-            <NumberField
+            <NumberFieldPercentage
                 value={repayment}
                 changeValue={changeRepayment}
                 label={"Tilgung"}
                 sx={styles.input}
                 error={error}
                 setError={setError}
-                adornment="%"
             />
         </>
     );

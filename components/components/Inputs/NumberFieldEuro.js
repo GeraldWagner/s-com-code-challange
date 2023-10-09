@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { TextField, InputAdornment } from "@mui/material";
 
-function NumberField({
+function NumberFieldEuro({
     value,
     changeValue,
     error,
     setError,
     label = "",
-    adornment = "",
     sx = {},
 }) {
     const [input, setInput] = useState(value);
@@ -24,7 +23,7 @@ function NumberField({
         }
 
         // Check if the entered value does not match the pattern of numbers
-        if (!/^\d+?\.?\d*$/.test(inputValue)) {
+        if (!/^\d+?\,?\d*$/.test(inputValue)) {
             setError(true);
             setHelperText("Bitte geben Sie nur Zahlen ein.");
             return;
@@ -43,6 +42,10 @@ function NumberField({
     };
 
     const handleChange = (event) => {
+        if (!/^\d*\,?\d*$/.test(event.target.value)) {
+            return;
+        }
+
         setInput(event.target.value);
         setError(false);
     };
@@ -57,9 +60,7 @@ function NumberField({
             helperText={helperText}
             InputProps={{
                 startAdornment: (
-                    <InputAdornment position="start">
-                        {adornment}
-                    </InputAdornment>
+                    <InputAdornment position="start">€</InputAdornment>
                 ),
             }}
             sx={sx}
@@ -67,4 +68,4 @@ function NumberField({
     );
 }
 
-export default NumberField;
+export default NumberFieldEuro;
