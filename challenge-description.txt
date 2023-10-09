@@ -1,24 +1,3 @@
-Von: Nübold, Eva <eva.nuebold@S-Communication.de>
-Betreff: Coding Challenge!
-Datum: 4. Oktober 2023 um 17:28:25 MESZ
-An: "gerald.wagner@mail.de" <gerald.wagner@mail.de>
-Kopie: "Reppmann, Thomas" <thomas.reppmann@S-Communication.de>
-
-Hallo Gerald,
- 
-wir würden uns freuen den Prozess mit dir fortzuführen. Wir fanden das erste Gespräch mit dir sehr angenehm. 
- 
-Daher findest du wie angekündigt eine Programmieraufgabe in Form einer Userstory (s.u.).
- 
-Wir bitten dich die Aufgabe nach bestem Wissen zu bearbeiten und uns das Ergebnis bestenfalls innerhalb einer Woche per Email zukommen zu lassen. Da ich bis zum 15.10.2023 im Urlaub bin, achte bitte darauf, dass du es auch an Thomas zusendest, sodass er mit der Sichtung bereits starten kann. Sollte es dir nicht möglich sein, gib uns ein kurzes Update.
- 
-Du kannst Thomas (hier in CC) jederzeit kontaktieren, wenn Fragen aufkommen, die du gern diskutieren möchtest.
- 
-Viel Erfolg bei der Bearbeitung!
- 
-Liebe Grüße
-Thomas & Eva
- 
 Userstory:
 Als Sparkassenkunde möchte ich einen Tilgungsplan für Kredite berechnen können, damit ich den Verlauf meines Darlehens besser verstehen kann.
  
@@ -37,20 +16,3 @@ Ergänzende Informationen:
 - Die Berechnung kann anhand von: https://finanzrechner-tilgung.faz.net/rechner3/faz/tilgungsrechner/?AspxAutoDetectCookieSupport=1 überprüft werden
 - Die Implementierung kann in Teilen prototypenhaft erfolgen, soll aber wesentliche Programmier-/Architekturkonzepte erkennen lassen. Abkürzungen sollten erkennbar sein und gern erläutert werden.
 - Das Arbeitsergebnis muss inklusive dem Sourcecode komplett bereitgestellt werden
- 
- 
-Eva Nübold Personalreferentin Human Resources
-_______________________________________________________
-S-Communication Services GmbH Friedrichstraße 50, 10117 Berlin Tel: +49 30 24636-683 Fax: +49 30 24636-699  E-Mail: Eva.nuebold@s-communication.de www.s-communication.de
- 
- 
-Eva Nübold Personalreferentin Human Resources
-_______________________________________________________
-S-Communication Services GmbH Friedrichstraße 50, 10117 Berlin Tel: +49 30 24636-683 Fax: +49 30 24636-699  E-Mail: Eva.nuebold@s-communication.de www.s-communication.de
- 
-
-Geschäftsführer: Jochen Maetje, Tobias Schlösser Sitz der Gesellschaft: Berlin, Amtsgericht Berlin (Charlottenburg) HRB 244713 B
- 
-
-Diese E-Mail einschließlich evtl. angehängter Dateien enthält vertrauliche und/oder rechtlich  geschützte Informationen. Wenn Sie nicht der richtige Adressat sind und Sie diese E-Mail  irrtümlich erhalten haben, dürfen Sie weder den Inhalt dieser E-Mail nutzen noch dürfen Sie  die evtl. angehängten Dateien öffnen und auch nichts kopieren oder weitergeben/verbreiten.  Bitte verständigen Sie den Absender und löschen Sie diese E-Mail und evtl. angehängte  Dateien umgehend. Vielen Dank!
-
