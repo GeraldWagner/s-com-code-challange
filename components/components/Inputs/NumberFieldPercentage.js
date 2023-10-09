@@ -15,21 +15,18 @@ function NumberFieldPercentage({
     const handleBlur = (event) => {
         const inputValue = event.target.value;
 
-        // Check if the text field is empty
         if (inputValue.trim().length === 0) {
             setError(true);
             setHelperText("Das Feld darf nicht leer sein.");
             return;
         }
 
-        // Check if the entered value does not match the pattern of numbers
         if (!/^\d+?\.?\d*$/.test(inputValue)) {
             setError(true);
             setHelperText("Bitte geben Sie nur Zahlen ein.");
             return;
         }
 
-        // Check if the value is less than or equal to 0
         if (parseFloat(inputValue) <= 0) {
             setError(true);
             setHelperText("Der Wert sollte größer als 0 sein.");
