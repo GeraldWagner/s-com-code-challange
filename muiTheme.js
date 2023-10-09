@@ -6,6 +6,9 @@ const theme = createTheme({
         primary: {
             main: red[500],
         },
+        status: {
+            error: red[900],
+        },
     },
     typography: {
         fontFamily: ["Open Sans", "Roboto"].join(","),

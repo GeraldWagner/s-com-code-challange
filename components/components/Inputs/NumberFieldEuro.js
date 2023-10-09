@@ -10,32 +10,38 @@ function NumberFieldEuro({
     sx = {},
 }) {
     const [input, setInput] = useState(value);
+    const [inputError, setInputError] = useState(false);
     const [helperText, setHelperText] = useState("");
 
     const handleBlur = (event) => {
         const inputValue = event.target.value;
 
         if (inputValue.trim().length === 0) {
-            setError(true);
+            handleError(true);
             setHelperText("Das Feld darf nicht leer sein.");
             return;
         }
 
         if (!/^\d+?\,?\d*$/.test(inputValue)) {
-            setError(true);
+            handleError(true);
             setHelperText("Bitte geben Sie nur Zahlen ein.");
             return;
         }
 
         if (parseFloat(inputValue) <= 0) {
-            setError(true);
+            handleError(true);
             setHelperText("Der Wert sollte größer als 0 sein.");
             return;
         }
 
-        setError(false);
+        handleError(false);
         setHelperText("");
         changeValue(event);
+    };
+
+    const handleError = (prev) => {
+        setInputError(prev);
+        setError(prev);
     };
 
     const handleChange = (event) => {
@@ -53,7 +59,7 @@ function NumberFieldEuro({
             value={input}
             onChange={handleChange}
             onBlur={handleBlur}
-            error={error}
+            error={inputError}
             helperText={helperText}
             InputProps={{
                 startAdornment: (
