@@ -2,13 +2,22 @@ import { useState } from "react";
 
 import { calculateYearlyDepts } from "./services";
 import { CalculatorTable, LoanInputForm, ResultsDisplay } from "./components";
-
-import { Grid, Box, Container, Typography } from "@mui/material";
+import { SubmitButton } from "../../components/Buttons";
+import { Grid, Box, Container, Typography, Divider } from "@mui/material";
 
 const styles = {
     h2: {
-        marginBottom: 2,
+        marginBottom: 3,
         marginTop: 2,
+    },
+    button: {
+        width: "100%",
+        maxWidth: "400px",
+        marginLeft: "auto",
+        marginRight: "auto",
+        display: "block",
+        marginTop: 4,
+        marginBottom: 4,
     },
 };
 
@@ -25,6 +34,7 @@ const RepaymentCalculator = () => {
     const changeRepayment = (event) => setRepayment(event.target.value);
 
     const calculateRate = () => {
+        console.log("hello");
         setShowCalculation((prev) => !prev);
     };
 
@@ -43,8 +53,9 @@ const RepaymentCalculator = () => {
                 container
                 justifyContent="space-between"
                 className="calculator"
+                spacing={4}
             >
-                <Grid item xs={12} sm={5}>
+                <Grid item xs={12} sm={6}>
                     <Typography variant="h2" sx={styles.h2}>
                         Angaben
                     </Typography>
@@ -66,19 +77,28 @@ const RepaymentCalculator = () => {
                         Ergebnis
                     </Typography>
 
-                    <ResultsDisplay
-                        monthlyRate={monthlyRate}
-                        years={years}
-                        error={error}
-                        showCalculation={showCalculation}
-                        calculateRate={calculateRate}
-                    />
+                    <ResultsDisplay monthlyRate={monthlyRate} years={years} />
+
+                    <SubmitButton
+                        variant="contained"
+                        size="large"
+                        onClick={calculateRate}
+                        sx={styles.button}
+                    >
+                        {showCalculation ? "Ausblenden" : "Berechnen"}
+                    </SubmitButton>
                 </Grid>
             </Grid>
 
             <Box className="calculation-container">
                 {showCalculation && (
-                    <CalculatorTable tilgungsplan={tilgungsplan} />
+                    <Grid>
+                        <Divider />
+                        <Typography variant="h2" sx={styles.h2}>
+                            Überblick
+                        </Typography>
+                        <CalculatorTable tilgungsplan={tilgungsplan} />
+                    </Grid>
                 )}
             </Box>
         </Container>

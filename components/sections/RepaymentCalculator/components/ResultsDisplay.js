@@ -38,16 +38,6 @@ const ResultsDisplay = ({
                     <Typography>Laufzeit:</Typography>
                     <Typography>{years} Jahre</Typography>
                 </Stack>
-
-                <Button
-                    variant="contained"
-                    size="large"
-                    onClick={calculateRate}
-                    sx={styles.button}
-                    disabled={error && !showCalculation}
-                >
-                    {showCalculation ? "Ausblenden" : "Berechnen"}
-                </Button>
             </Stack>
         </>
     );

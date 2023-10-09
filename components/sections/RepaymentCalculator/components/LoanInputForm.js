@@ -6,8 +6,7 @@ import {
 const styles = {
     input: {
         width: "100%",
-        marginTop: 1,
-        marginBottom: 1,
+        marginBottom: 2,
     },
 };
 
