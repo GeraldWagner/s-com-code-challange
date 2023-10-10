@@ -10,6 +10,12 @@ Clone the repository
 git clone https://github.com/GeraldWagner/s-com-code-challenge.git
 ```
 
+Navigate into the project directory
+
+```bash
+cd s-com-code-challenge
+```
+
 Install dependencies
 
 ```bash
