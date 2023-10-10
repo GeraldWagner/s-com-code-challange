@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Grid, Box, Container, Typography } from "@mui/material";
+import { Grid, Box, Paper, Container, Typography } from "@mui/material";
 import { SubmitButton } from "../../components/Buttons";
 import { DividerLg } from "../../components/Dividers";
 import { CalculatorTable, LoanInputForm, ResultsDisplay } from "./components";
@@ -20,6 +20,16 @@ const styles = {
         marginTop: 4,
         marginBottom: 4,
     },
+    wrapper: { pt: 4, pb: 6 },
+    errorMessage: {
+        p: 2,
+        backgroundColor: "paper.note.bg",
+        minHeight: "100px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        fontWeight: 600,
+    },
 };
 
 const RepaymentCalculator = () => {
@@ -35,7 +45,6 @@ const RepaymentCalculator = () => {
     const changeRepayment = (event) => setRepayment(event.target.value);
 
     const calculateRate = () => {
-        console.log("hello");
         setShowCalculation((prev) => !prev);
     };
 
@@ -49,13 +58,8 @@ const RepaymentCalculator = () => {
     );
 
     return (
-        <Container>
-            <Grid
-                container
-                justifyContent="space-between"
-                className="calculator"
-                spacing={4}
-            >
+        <Container sx={styles.wrapper}>
+            <Grid container justifyContent="space-between" spacing={4}>
                 <Grid item xs={12} md={6}>
                     <Typography variant="h2" sx={styles.h2}>
                         Angaben
@@ -78,16 +82,29 @@ const RepaymentCalculator = () => {
                         Ergebnis
                     </Typography>
 
-                    <ResultsDisplay monthlyRate={monthlyRate} years={years} />
+                    {error ? (
+                        <Paper elevation="0" sx={styles.errorMessage}>
+                            Bitte korrigieren Sie Ihre Formulareingaben.
+                        </Paper>
+                    ) : (
+                        <>
+                            <ResultsDisplay
+                                monthlyRate={monthlyRate}
+                                years={years}
+                            />
 
-                    <SubmitButton
-                        variant="contained"
-                        size="large"
-                        onClick={calculateRate}
-                        sx={styles.button}
-                    >
-                        {showCalculation ? "Ausblenden" : "Berechnen"}
-                    </SubmitButton>
+                            <SubmitButton
+                                variant={
+                                    showCalculation ? "outlined" : "contained"
+                                }
+                                size="large"
+                                onClick={calculateRate}
+                                sx={styles.button}
+                            >
+                                {showCalculation ? "Ausblenden" : "Berechnen"}
+                            </SubmitButton>
+                        </>
+                    )}
                 </Grid>
             </Grid>
 

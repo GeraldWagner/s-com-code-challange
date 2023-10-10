@@ -34,6 +34,7 @@ const RepaymentTable = ({ tilgungsplan }) => {
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+    const isDesktop = !isMobile;
     const [selectedColumn, setSelectedColumn] = useState([headerRow[0]]);
 
     useEffect(() => {
@@ -103,16 +104,19 @@ const RepaymentTable = ({ tilgungsplan }) => {
                                     name="Rate"
                                     value="Rate"
                                     sx={styles.table.th}
+                                    align={isDesktop ? "right" : "left"}
                                 />
                                 <RepaymentTableCell
                                     name="Zinsanteil"
                                     value="Zinsanteil"
                                     sx={styles.table.th}
+                                    align={isDesktop ? "right" : "left"}
                                 />
                                 <RepaymentTableCell
                                     name="Tilgungsanteil"
                                     value="Tilgungsanteil"
                                     sx={styles.table.th}
+                                    align={isDesktop ? "right" : "left"}
                                 />
                                 <RepaymentTableCell
                                     name="Restschuld"
@@ -132,14 +136,17 @@ const RepaymentTable = ({ tilgungsplan }) => {
                                     <RepaymentTableCell
                                         name="Rate"
                                         value={yearlyTilgung.Rate}
+                                        align={isDesktop ? "right" : "left"}
                                     />
                                     <RepaymentTableCell
                                         name="Zinsanteil"
                                         value={yearlyTilgung.Zinsanteil}
+                                        align={isDesktop ? "right" : "left"}
                                     />
                                     <RepaymentTableCell
                                         name="Tilgungsanteil"
                                         value={yearlyTilgung.Tilgungsanteil}
+                                        align={isDesktop ? "right" : "left"}
                                     />
 
                                     <RepaymentTableCell

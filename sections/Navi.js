@@ -1,20 +1,5 @@
-import { Box } from "@mui/material";
-import theme from "../styles/theme";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import Image from "next/image";
-
-const style = {
-    navi: {
-        minHeight: "100px",
-        backgroundColor: theme.palette.primary.main,
-        paddingLeft: 5,
-        paddingTop: 4,
-        paddingBottom: 5,
-        color: "white",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-    },
-};
 
 const logo = {
     width: Math.round(389.764 / 12),
@@ -22,6 +7,23 @@ const logo = {
 };
 
 const Navi = ({ children }) => {
+    const theme = useTheme();
+    const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+
+    const style = {
+        navi: {
+            backgroundColor: "primary.main",
+            color: "white",
+            p: 2,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            ...(isDesktop && {
+                p: 4,
+            }),
+        },
+    };
+
     return (
         <Box sx={style.navi}>
             <Image
