@@ -11,15 +11,6 @@ const styles = {
         marginBottom: 3,
         marginTop: 2,
     },
-    button: {
-        width: "100%",
-        maxWidth: "400px",
-        marginLeft: "auto",
-        marginRight: "auto",
-        display: "block",
-        marginTop: 4,
-        marginBottom: 4,
-    },
     wrapper: { pt: 4, pb: 6 },
     errorMessage: {
         p: 2,
@@ -80,29 +71,13 @@ const RepaymentCalculator = () => {
                         Ergebnis
                     </Typography>
 
-                    {error ? (
-                        <Paper elevation={0} sx={styles.errorMessage}>
-                            Bitte korrigieren Sie Ihre Formulareingaben.
-                        </Paper>
-                    ) : (
-                        <>
-                            <ResultsDisplay
-                                monthlyRate={monthlyRate}
-                                years={years}
-                            />
-
-                            <SubmitButton
-                                variant={
-                                    showCalculation ? "outlined" : "contained"
-                                }
-                                size="large"
-                                onClick={calculateRate}
-                                sx={styles.button}
-                            >
-                                {showCalculation ? "Ausblenden" : "Berechnen"}
-                            </SubmitButton>
-                        </>
-                    )}
+                    <ResultsDisplay
+                        monthlyRate={monthlyRate}
+                        years={years}
+                        error={error}
+                        calculateRate={calculateRate}
+                        showCalculation={showCalculation}
+                    />
                 </Grid>
             </Grid>
 

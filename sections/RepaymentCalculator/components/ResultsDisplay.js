@@ -1,6 +1,20 @@
-import { Typography, Stack, useMediaQuery, useTheme } from "@mui/material";
+import {
+    Typography,
+    Stack,
+    useMediaQuery,
+    useTheme,
+    Paper,
+} from "@mui/material";
 
-const ResultsDisplay = ({ monthlyRate, years }) => {
+import { SubmitButton } from "../../../components/Buttons";
+
+const ResultsDisplay = ({
+    monthlyRate,
+    years,
+    error,
+    calculateRate,
+    showCalculation,
+}) => {
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
 
@@ -20,11 +34,28 @@ const ResultsDisplay = ({ monthlyRate, years }) => {
             flexDirection: "row",
             justifyContent: "space-between",
         },
+        errorMessage: {
+            color: "red",
+            marginTop: 2,
+        },
         button: {
-            marginTop: 1,
-            marginBottom: 2,
+            width: "100%",
+            maxWidth: "400px",
+            marginLeft: "auto",
+            marginRight: "auto",
+            display: "block",
+            marginTop: 4,
+            marginBottom: 4,
         },
     };
+
+    if (error) {
+        return (
+            <Paper elevation={0} sx={styles.errorMessage}>
+                Bitte korrigieren Sie Ihre Formulareingaben.
+            </Paper>
+        );
+    }
 
     return (
         <>
@@ -39,6 +70,14 @@ const ResultsDisplay = ({ monthlyRate, years }) => {
                     <Typography>{years} Jahre</Typography>
                 </Stack>
             </Stack>
+            <SubmitButton
+                variant={showCalculation ? "outlined" : "contained"}
+                size="large"
+                onClick={calculateRate}
+                sx={styles.button}
+            >
+                {showCalculation ? "Ausblenden" : "Berechnen"}
+            </SubmitButton>
         </>
     );
 };
