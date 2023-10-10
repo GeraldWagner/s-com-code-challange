@@ -33,12 +33,12 @@ const styles = {
 };
 
 const RepaymentCalculator = () => {
+    const [showCalculation, setShowCalculation] = useState(false);
+    const [error, setError] = useState(false);
     const [loan, setLoan] = useState(250000);
     const [debitInterest, setDebitInterest] = useState(1.5);
     const [repayment, setRepayment] = useState(3);
-    const [showCalculation, setShowCalculation] = useState(false);
-
-    const [error, setError] = useState(false);
+    const years = 10;
 
     const changeLoan = (event) => setLoan(event.target.value);
     const changeDebitInterest = (event) => setDebitInterest(event.target.value);
@@ -47,8 +47,6 @@ const RepaymentCalculator = () => {
     const calculateRate = () => {
         setShowCalculation((prev) => !prev);
     };
-
-    const years = 10;
 
     const { tilgungsplan, monthlyRate } = calculateYearlyDepts(
         loan,
@@ -83,7 +81,7 @@ const RepaymentCalculator = () => {
                     </Typography>
 
                     {error ? (
-                        <Paper elevation="0" sx={styles.errorMessage}>
+                        <Paper elevation={0} sx={styles.errorMessage}>
                             Bitte korrigieren Sie Ihre Formulareingaben.
                         </Paper>
                     ) : (

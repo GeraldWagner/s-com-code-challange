@@ -13,7 +13,7 @@ const calculateDebts = (darlehenshoehe, zinssatz, tilgungssatz, laufzeit) => {
     const tilgungsplanYear = [];
 
     /* First Year */
-    const tilgungsplanFirstYear = calculateTilgungsplanByMonth(
+    const tilgungsplanFirstYear = calculateDebtsByMonth(
         year,
         zinssatz,
         monthLeftFistYear,
@@ -46,7 +46,7 @@ const calculateDebts = (darlehenshoehe, zinssatz, tilgungssatz, laufzeit) => {
     const monthLeftLastYear = 12 - monthLeftFistYear;
 
     if (monthLeftLastYear !== 0) {
-        const tilgungsplanLastYear = calculateTilgungsplanByMonth(
+        const tilgungsplanLastYear = calculateDebtsByMonth(
             year,
             zinssatz,
             monthLeftLastYear,
@@ -61,7 +61,7 @@ const calculateDebts = (darlehenshoehe, zinssatz, tilgungssatz, laufzeit) => {
     return { tilgungsplan: tilgungsplanYear, monthlyRate: monthRate };
 };
 
-function calculateTilgungsplanByMonth(
+function calculateDebtsByMonth(
     jahr,
     zinssatz,
     monthLaufzeit,
