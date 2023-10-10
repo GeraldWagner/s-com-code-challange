@@ -11,11 +11,11 @@ const styles = {
 };
 
 const LoanInputForm = ({
-    loan,
+    loanAmount,
     changeLoan,
-    debitInterest,
+    interestRate,
     changeDebitInterest,
-    repayment,
+    yearlyRepayment,
     changeRepayment,
     error,
     setError,
@@ -23,7 +23,7 @@ const LoanInputForm = ({
     return (
         <>
             <NumberFieldEuro
-                value={loan}
+                value={loanAmount}
                 changeValue={changeLoan}
                 label={"Darlehenssumme"}
                 sx={styles.input}
@@ -33,7 +33,7 @@ const LoanInputForm = ({
             />
 
             <NumberFieldPercentage
-                value={debitInterest}
+                value={interestRate}
                 changeValue={changeDebitInterest}
                 label={"Sollzins"}
                 sx={styles.input}
@@ -43,7 +43,7 @@ const LoanInputForm = ({
             />
 
             <NumberFieldPercentage
-                value={repayment}
+                value={yearlyRepayment}
                 changeValue={changeRepayment}
                 label={"Tilgung"}
                 sx={styles.input}

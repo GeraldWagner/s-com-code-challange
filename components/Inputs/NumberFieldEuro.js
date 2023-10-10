@@ -22,7 +22,7 @@ function NumberFieldEuro({
             return;
         }
 
-        if (!/^\d+?\,?\d*$/.test(inputValue)) {
+        if (!/^\d+?\.?\d*$/.test(inputValue)) {
             handleError(true);
             setHelperText("Bitte geben Sie nur Zahlen ein.");
             return;
@@ -51,7 +51,7 @@ function NumberFieldEuro({
     };
 
     const handleChange = (event) => {
-        if (!/^\d*\,?\d*$/.test(event.target.value)) {
+        if (!/^\d*\.?\d*$/.test(event.target.value)) {
             return;
         }
 

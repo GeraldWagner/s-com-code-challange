@@ -16,8 +16,10 @@ import {
     useMediaQuery,
 } from "@mui/material";
 
-const RepaymentTable = ({ tilgungsplan }) => {
-    const headerRow = Object.keys(tilgungsplan[0]);
+import { formatCurrency } from "../services/formatter";
+
+const RepaymentTable = ({ repaymentPlan }) => {
+    const headerRow = Object.keys(repaymentPlan[0]);
     const [selectedColumn, setSelectedColumn] = useState([headerRow[0]]);
 
     const theme = useTheme();
@@ -97,35 +99,35 @@ const RepaymentTable = ({ tilgungsplan }) => {
         <>
             <ColumnSelect />
             <TableContainer id="table-tilgung">
-                {tilgungsplan && (
+                {repaymentPlan && (
                     <Table>
                         <TableHead>
                             <TableRow>
                                 <RepaymentTableCell
-                                    name="Jahr"
+                                    name="Year"
                                     value={"Jahr"}
                                     sx={styles.table.th}
                                 />
                                 <RepaymentTableCell
-                                    name="Rate"
+                                    name="RateForYear"
                                     value="Rate"
                                     sx={styles.table.th}
                                     align={isDesktop ? "right" : "left"}
                                 />
                                 <RepaymentTableCell
-                                    name="Zinsanteil"
+                                    name="Interest"
                                     value="Zinsanteil"
                                     sx={styles.table.th}
                                     align={isDesktop ? "right" : "left"}
                                 />
                                 <RepaymentTableCell
-                                    name="Tilgungsanteil"
+                                    name="Repayment"
                                     value="Tilgungsanteil"
                                     sx={styles.table.th}
                                     align={isDesktop ? "right" : "left"}
                                 />
                                 <RepaymentTableCell
-                                    name="Restschuld"
+                                    name="RemainingDebt"
                                     value="Restschuld"
                                     align="right"
                                     sx={styles.table.th}
@@ -133,34 +135,42 @@ const RepaymentTable = ({ tilgungsplan }) => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {tilgungsplan.map((yearlyTilgung) => (
-                                <TableRow key={`tr-${yearlyTilgung.Jahr}`}>
+                            {repaymentPlan.map((yearlyRepayment) => (
+                                <TableRow key={`tr-${yearlyRepayment.Year}`}>
                                     <RepaymentTableCell
-                                        name="Jahr"
-                                        value={yearlyTilgung.Jahr}
+                                        name="Year"
+                                        value={yearlyRepayment.Year}
                                         sx={styles.table.tr}
                                     />
                                     <RepaymentTableCell
-                                        name="Rate"
-                                        value={yearlyTilgung.Rate}
+                                        name="RateForYear"
+                                        value={formatCurrency(
+                                            yearlyRepayment.RateForYear
+                                        )}
                                         align={isDesktop ? "right" : "left"}
                                         sx={styles.table.tr}
                                     />
                                     <RepaymentTableCell
-                                        name="Zinsanteil"
-                                        value={yearlyTilgung.Zinsanteil}
+                                        name="Interest"
+                                        value={formatCurrency(
+                                            yearlyRepayment.Interest
+                                        )}
                                         align={isDesktop ? "right" : "left"}
                                         sx={styles.table.tr}
                                     />
                                     <RepaymentTableCell
-                                        name="Tilgungsanteil"
-                                        value={yearlyTilgung.Tilgungsanteil}
+                                        name="Repayment"
+                                        value={formatCurrency(
+                                            yearlyRepayment.Repayment
+                                        )}
                                         align={isDesktop ? "right" : "left"}
                                     />
 
                                     <RepaymentTableCell
-                                        name="Restschuld"
-                                        value={yearlyTilgung.Restschuld}
+                                        name="RemainingDebt"
+                                        value={formatCurrency(
+                                            yearlyRepayment.RemainingDebt
+                                        )}
                                         align="right"
                                         sx={styles.table.tr}
                                     />

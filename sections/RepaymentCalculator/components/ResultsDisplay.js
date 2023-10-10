@@ -7,10 +7,11 @@ import {
 } from "@mui/material";
 
 import { SubmitButton } from "../../../components/Buttons";
+import { formatCurrency } from "../";
 
 const ResultsDisplay = ({
-    monthlyRate,
-    years,
+    monthlyPayment,
+    loanDurationInYears,
     error,
     calculateRate,
     showCalculation,
@@ -67,12 +68,12 @@ const ResultsDisplay = ({
             <Stack sx={styles.outer}>
                 <Stack sx={styles.inner}>
                     <Typography>Monatliche Rate:</Typography>
-                    <Typography>{monthlyRate.toFixed(2)} €</Typography>
+                    <Typography>{formatCurrency(monthlyPayment)}</Typography>
                 </Stack>
 
                 <Stack sx={styles.inner}>
                     <Typography>Laufzeit:</Typography>
-                    <Typography>{years} Jahre</Typography>
+                    <Typography>{loanDurationInYears} Jahre</Typography>
                 </Stack>
             </Stack>
             <SubmitButton

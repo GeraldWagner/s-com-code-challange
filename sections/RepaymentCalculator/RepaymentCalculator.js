@@ -4,33 +4,49 @@ import {
     CalculatorTable,
     LoanInputForm,
     ResultsDisplay,
-    calculateYearlyDepts,
+    calculateRepaymentPlan,
 } from "./";
 import { SlideToggleBox } from "../../components/Boxes";
 import { DividerLg } from "../../components/Dividers";
-import { styles } from "./RepaymentCalculator.styles";
+
+const styles = {
+    h2: {
+        marginBottom: 3,
+        marginTop: 2,
+    },
+    button: {
+        width: "100%",
+        maxWidth: "400px",
+        marginLeft: "auto",
+        marginRight: "auto",
+        display: "block",
+        marginTop: 4,
+        marginBottom: 4,
+    },
+    wrapper: { pt: 4, pb: 6 },
+};
 
 const RepaymentCalculator = () => {
     const [showCalculation, setShowCalculation] = useState(false);
     const [error, setError] = useState(false);
-    const [loan, setLoan] = useState(250000);
-    const [debitInterest, setDebitInterest] = useState(1.5);
-    const [repayment, setRepayment] = useState(3);
-    const years = 10;
+    const [loanAmount, setLoanAmount] = useState(250000);
+    const [interestRate, setInterestRate] = useState(1.5);
+    const [yearlyRepayment, setYearlyRepayment] = useState(3);
+    const loanDurationInYears = 10;
 
-    const changeLoan = (event) => setLoan(event.target.value);
-    const changeDebitInterest = (event) => setDebitInterest(event.target.value);
-    const changeRepayment = (event) => setRepayment(event.target.value);
+    const changeLoan = (event) => setLoanAmount(event.target.value);
+    const changeDebitInterest = (event) => setInterestRate(event.target.value);
+    const changeRepayment = (event) => setYearlyRepayment(event.target.value);
 
     const calculateRate = () => {
         setShowCalculation((prev) => !prev);
     };
 
-    const { tilgungsplan, monthlyRate } = calculateYearlyDepts(
-        loan,
-        debitInterest,
-        repayment,
-        years
+    const { repaymentPlan, monthlyPayment } = calculateRepaymentPlan(
+        loanAmount,
+        interestRate,
+        yearlyRepayment,
+        loanDurationInYears
     );
 
     return (
@@ -42,11 +58,11 @@ const RepaymentCalculator = () => {
                     </Typography>
 
                     <LoanInputForm
-                        loan={loan}
+                        loanAmount={loanAmount}
                         changeLoan={changeLoan}
-                        repayment={repayment}
+                        yearlyRepayment={yearlyRepayment}
                         changeDebitInterest={changeDebitInterest}
-                        debitInterest={debitInterest}
+                        interestRate={interestRate}
                         changeRepayment={changeRepayment}
                         error={error}
                         setError={setError}
@@ -59,8 +75,8 @@ const RepaymentCalculator = () => {
                     </Typography>
 
                     <ResultsDisplay
-                        monthlyRate={monthlyRate}
-                        years={years}
+                        monthlyPayment={monthlyPayment}
+                        loanDurationInYears={loanDurationInYears}
                         error={error}
                         calculateRate={calculateRate}
                         showCalculation={showCalculation}
@@ -75,7 +91,7 @@ const RepaymentCalculator = () => {
                         Überblick
                     </Typography>
 
-                    <CalculatorTable tilgungsplan={tilgungsplan} />
+                    <CalculatorTable repaymentPlan={repaymentPlan} />
                 </SlideToggleBox>
             </Box>
         </Container>
