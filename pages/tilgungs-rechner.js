@@ -1,7 +1,7 @@
-import { Layout, Header } from "../components/site";
-import { RepaymentCalculator } from "../components/sections/RepaymentCalculator";
+import { Layout, Header } from "../sections";
+import { RepaymentCalculator } from "../sections/RepaymentCalculator";
 import { Typography, Container } from "@mui/material";
-import { DividerLg } from "../components/components/Dividers";
+import { DividerLg } from "../components/Dividers";
 
 export default function RepaymentCalculatorPage() {
     return (

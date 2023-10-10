@@ -1,9 +1,6 @@
 import Head from "next/head";
-import Link from "next/link";
-
 import Footer from "./Footer";
 import Navi from "./Navi";
-
 import { Typography, Stack } from "@mui/material";
 
 const name = "Gerald Wagner";
@@ -14,7 +11,7 @@ const styles = {
     main: { flexGrow: 1 },
 };
 
-export default function Layout({ children }) {
+const Layout = ({ children }) => {
     return (
         <Stack sx={styles.layout}>
             <Head>
@@ -38,4 +35,6 @@ export default function Layout({ children }) {
             </Footer>
         </Stack>
     );
-}
+};
+
+export default Layout;

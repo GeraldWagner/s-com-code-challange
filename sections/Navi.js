@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import theme from "../../muiTheme";
+import theme from "../styles/theme";
 import Image from "next/image";
 
 const style = {
