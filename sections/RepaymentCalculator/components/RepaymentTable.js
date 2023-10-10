@@ -22,6 +22,11 @@ const styles = {
         marginTop: 2,
         marginBottom: 2,
     },
+    table: {
+        th: {
+            fontWeight: "bold",
+        },
+    },
 };
 
 const RepaymentTable = ({ tilgungsplan }) => {
@@ -62,7 +67,7 @@ const RepaymentTable = ({ tilgungsplan }) => {
         );
     };
 
-    const RepaymentTableCell = ({ name, value }) => {
+    const RepaymentTableCell = ({ name, value, align, sx }) => {
         const showCell =
             (isMobile && selectedColumn === name) ||
             (isMobile && name === "Restschuld") ||
@@ -70,7 +75,15 @@ const RepaymentTable = ({ tilgungsplan }) => {
                 ? true
                 : false;
 
-        return <>{showCell && <TableCell>{value}</TableCell>}</>;
+        return (
+            <>
+                {showCell && (
+                    <TableCell sx={sx} align={align}>
+                        {value}
+                    </TableCell>
+                )}
+            </>
+        );
     };
 
     return (
@@ -81,13 +94,32 @@ const RepaymentTable = ({ tilgungsplan }) => {
                     <Table>
                         <TableHead>
                             <TableRow>
-                                {headerRow.map((row) => (
-                                    <RepaymentTableCell
-                                        key={`th-${row}`}
-                                        name={row}
-                                        value={row}
-                                    />
-                                ))}
+                                <RepaymentTableCell
+                                    name="Jahr"
+                                    value={"Jahr"}
+                                    sx={styles.table.th}
+                                />
+                                <RepaymentTableCell
+                                    name="Rate"
+                                    value="Rate"
+                                    sx={styles.table.th}
+                                />
+                                <RepaymentTableCell
+                                    name="Zinsanteil"
+                                    value="Zinsanteil"
+                                    sx={styles.table.th}
+                                />
+                                <RepaymentTableCell
+                                    name="Tilgungsanteil"
+                                    value="Tilgungsanteil"
+                                    sx={styles.table.th}
+                                />
+                                <RepaymentTableCell
+                                    name="Restschuld"
+                                    value="Restschuld"
+                                    align="right"
+                                    sx={styles.table.th}
+                                />
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -96,14 +128,6 @@ const RepaymentTable = ({ tilgungsplan }) => {
                                     <RepaymentTableCell
                                         name="Jahr"
                                         value={yearlyTilgung.Jahr}
-                                    />
-                                    <RepaymentTableCell
-                                        name="Zinssatz"
-                                        value={yearlyTilgung.Zinssatz}
-                                    />
-                                    <RepaymentTableCell
-                                        name="Tilgungssatz"
-                                        value={yearlyTilgung.Tilgungssatz}
                                     />
                                     <RepaymentTableCell
                                         name="Rate"
@@ -121,6 +145,7 @@ const RepaymentTable = ({ tilgungsplan }) => {
                                     <RepaymentTableCell
                                         name="Restschuld"
                                         value={yearlyTilgung.Restschuld}
+                                        align="right"
                                     />
                                 </TableRow>
                             ))}

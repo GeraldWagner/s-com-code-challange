@@ -29,14 +29,11 @@ const calculateDebts = (darlehenshoehe, zinssatz, tilgungssatz, laufzeit) => {
     for (let jahr = 1; jahr < laufzeit; jahr++) {
         const yearZinsanteil = (restschuld / 100) * zinssatz;
         const yearTilgungsanteil = initRate - yearZinsanteil;
-        const yearTilgungssatzneu = (yearTilgungsanteil / restschuld) * 100;
 
         restschuld = restschuld - yearTilgungsanteil;
 
         tilgungsplanYear.push({
             Jahr: year,
-            Zinssatz: zinssatz + " %",
-            Tilgungssatz: yearTilgungssatzneu.toFixed(2) + " %",
             Rate: initRate.toFixed(2) + " €",
             Zinsanteil: yearZinsanteil.toFixed(2) + " €",
             Tilgungsanteil: yearTilgungsanteil.toFixed(2) + " €",
@@ -73,8 +70,6 @@ function calculateTilgungsplanByMonth(
 ) {
     let tilgungsplan = {
         Jahr: jahr,
-        Zinssatz: zinssatz + " %",
-        Tilgungssatz: 0,
         Rate: 0,
         Zinsanteil: 0,
         Tilgungsanteil: 0,
@@ -84,11 +79,9 @@ function calculateTilgungsplanByMonth(
     for (let month = 0; month <= monthLaufzeit; month++) {
         const monthZinsanteil = (restschuld / 100 / 12) * zinssatz;
         const monthTilgungsanteil = monthRate - monthZinsanteil;
-        const monthTilgungssatz = (monthTilgungsanteil / restschuld / 12) * 100;
 
         restschuld = restschuld - monthTilgungsanteil;
 
-        tilgungsplan.Tilgungssatz += monthTilgungssatz;
         tilgungsplan.Rate += monthRate;
         tilgungsplan.Zinsanteil += monthZinsanteil;
         tilgungsplan.Tilgungsanteil += monthTilgungsanteil;
@@ -97,8 +90,6 @@ function calculateTilgungsplanByMonth(
 
     tilgungsplan = {
         Jahr: tilgungsplan.Jahr,
-        Zinssatz: tilgungsplan.Zinssatz,
-        Tilgungssatz: tilgungsplan.Tilgungssatz.toFixed(2) + " %",
         Rate: tilgungsplan.Rate.toFixed(2) + " €",
         Zinsanteil: tilgungsplan.Zinsanteil.toFixed(2) + " €",
         Tilgungsanteil: tilgungsplan.Tilgungsanteil.toFixed(2) + " €",
