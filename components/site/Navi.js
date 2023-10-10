@@ -15,19 +15,19 @@ const style = {
         alignItems: "center",
     },
 };
+
+const logo = {
+    width: Math.round(389.764 / 12),
+    height: Math.round(496.063 / 12),
+};
+
 const Navi = ({ children }) => {
-    const divider = 12;
-    const width = Math.round(389.764 / divider);
-    const height = Math.round(496.063 / divider);
-
-    console.log(width, height);
-
     return (
         <Box sx={style.navi}>
             <Image
                 src="/images/sparkasse-logo.svg"
-                width={width}
-                height={height}
+                width={logo.width}
+                height={logo.height}
                 alt="Logo Sparkasse"
             />
             {children}
