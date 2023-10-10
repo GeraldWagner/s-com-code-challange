@@ -4,6 +4,7 @@ import { SubmitButton } from "../../components/Buttons";
 import { DividerLg } from "../../components/Dividers";
 import { CalculatorTable, LoanInputForm, ResultsDisplay } from "./components";
 import { calculateYearlyDepts } from "./services";
+import SlideToggleBox from "../../components/Boxes/SlideToggleBox";
 
 const styles = {
     h2: {
@@ -91,15 +92,13 @@ const RepaymentCalculator = () => {
             </Grid>
 
             <Box className="calculation-container">
-                {showCalculation && (
-                    <Grid>
-                        <DividerLg />
-                        <Typography variant="h2" sx={styles.h2}>
-                            Überblick
-                        </Typography>
-                        <CalculatorTable tilgungsplan={tilgungsplan} />
-                    </Grid>
-                )}
+                <SlideToggleBox isOpen={showCalculation}>
+                    <DividerLg />
+                    <Typography variant="h2" sx={styles.h2}>
+                        Überblick
+                    </Typography>
+                    <CalculatorTable tilgungsplan={tilgungsplan} />
+                </SlideToggleBox>
             </Box>
         </Container>
     );
