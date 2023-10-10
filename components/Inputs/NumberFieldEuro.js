@@ -8,6 +8,7 @@ function NumberFieldEuro({
     setError,
     label = "",
     sx = {},
+    max,
 }) {
     const [input, setInput] = useState(value);
     const [inputError, setInputError] = useState(false);
@@ -31,6 +32,12 @@ function NumberFieldEuro({
         if (parseFloat(inputValue) <= 0) {
             handleError(true);
             setHelperText("Der Wert sollte größer als 0 sein.");
+            return;
+        }
+
+        if (parseFloat(inputValue) > max) {
+            handleError(true);
+            setHelperText(" Wert sollte kleiner als " + max + " sein.");
             return;
         }
 

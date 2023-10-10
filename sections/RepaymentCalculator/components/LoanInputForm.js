@@ -29,6 +29,7 @@ const LoanInputForm = ({
                 sx={styles.input}
                 error={error}
                 setError={setError}
+                max={1000000}
             />
 
             <NumberFieldPercentage
@@ -38,6 +39,7 @@ const LoanInputForm = ({
                 sx={styles.input}
                 error={error}
                 setError={setError}
+                max={30}
             />
 
             <NumberFieldPercentage
@@ -47,6 +49,7 @@ const LoanInputForm = ({
                 sx={styles.input}
                 error={error}
                 setError={setError}
+                max={99}
             />
         </>
     );
