@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { CalculatorTable, LoanInputForm, ResultsDisplay } from "./components";
 import { Grid, Box, Container, Typography } from "@mui/material";
 import { SubmitButton } from "../../components/Buttons";
 import { DividerLg } from "../../components/Dividers";
+import { CalculatorTable, LoanInputForm, ResultsDisplay } from "./components";
 import { calculateYearlyDepts } from "./services";
 
 const styles = {

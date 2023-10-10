@@ -10,7 +10,7 @@ const styles = {
     },
 };
 
-const Footer = ({ children, home }) => {
+const Footer = ({ children }) => {
     return <Box sx={styles.footer}>{children}</Box>;
 };
 
