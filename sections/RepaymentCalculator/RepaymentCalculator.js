@@ -1,27 +1,14 @@
 import { useState } from "react";
-import { Grid, Box, Paper, Container, Typography } from "@mui/material";
-import { SubmitButton } from "../../components/Buttons";
+import { Grid, Box, Container, Typography } from "@mui/material";
+import {
+    CalculatorTable,
+    LoanInputForm,
+    ResultsDisplay,
+    calculateYearlyDepts,
+} from "./";
+import { SlideToggleBox } from "../../components/Boxes";
 import { DividerLg } from "../../components/Dividers";
-import { CalculatorTable, LoanInputForm, ResultsDisplay } from "./components";
-import { calculateYearlyDepts } from "./services";
-import SlideToggleBox from "../../components/Boxes/SlideToggleBox";
-
-const styles = {
-    h2: {
-        marginBottom: 3,
-        marginTop: 2,
-    },
-    wrapper: { pt: 4, pb: 6 },
-    errorMessage: {
-        p: 2,
-        backgroundColor: "paper.note.bg",
-        minHeight: "100px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontWeight: 600,
-    },
-};
+import { styles } from "./RepaymentCalculator.styles";
 
 const RepaymentCalculator = () => {
     const [showCalculation, setShowCalculation] = useState(false);
@@ -87,6 +74,7 @@ const RepaymentCalculator = () => {
                     <Typography variant="h2" sx={styles.h2}>
                         Überblick
                     </Typography>
+
                     <CalculatorTable tilgungsplan={tilgungsplan} />
                 </SlideToggleBox>
             </Box>

@@ -4,7 +4,6 @@ import { TextField, InputAdornment } from "@mui/material";
 function NumberFieldPercentage({
     value,
     changeValue,
-    error,
     setError,
     label = "",
     sx = {},

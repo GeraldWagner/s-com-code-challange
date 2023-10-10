@@ -16,26 +16,32 @@ import {
     useMediaQuery,
 } from "@mui/material";
 
-const styles = {
-    formControl: {
-        width: "100%",
-        marginTop: 2,
-        marginBottom: 2,
-    },
-    table: {
-        th: {
-            fontWeight: "bold",
-        },
-    },
-};
-
 const RepaymentTable = ({ tilgungsplan }) => {
     const headerRow = Object.keys(tilgungsplan[0]);
+    const [selectedColumn, setSelectedColumn] = useState([headerRow[0]]);
 
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down("md"));
     const isDesktop = !isMobile;
-    const [selectedColumn, setSelectedColumn] = useState([headerRow[0]]);
+
+    const styles = {
+        formControl: {
+            width: "100%",
+            marginTop: 2,
+            marginBottom: 2,
+        },
+        table: {
+            th: {
+                fontWeight: "bold",
+            },
+            tr: {
+                ...(isDesktop && {
+                    pt: 3,
+                    pb: 3,
+                }),
+            },
+        },
+    };
 
     useEffect(() => {
         setSelectedColumn(headerRow[0]);
@@ -132,16 +138,19 @@ const RepaymentTable = ({ tilgungsplan }) => {
                                     <RepaymentTableCell
                                         name="Jahr"
                                         value={yearlyTilgung.Jahr}
+                                        sx={styles.table.tr}
                                     />
                                     <RepaymentTableCell
                                         name="Rate"
                                         value={yearlyTilgung.Rate}
                                         align={isDesktop ? "right" : "left"}
+                                        sx={styles.table.tr}
                                     />
                                     <RepaymentTableCell
                                         name="Zinsanteil"
                                         value={yearlyTilgung.Zinsanteil}
                                         align={isDesktop ? "right" : "left"}
+                                        sx={styles.table.tr}
                                     />
                                     <RepaymentTableCell
                                         name="Tilgungsanteil"
@@ -153,6 +162,7 @@ const RepaymentTable = ({ tilgungsplan }) => {
                                         name="Restschuld"
                                         value={yearlyTilgung.Restschuld}
                                         align="right"
+                                        sx={styles.table.tr}
                                     />
                                 </TableRow>
                             ))}
