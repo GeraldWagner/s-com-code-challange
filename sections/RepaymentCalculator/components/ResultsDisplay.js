@@ -35,8 +35,13 @@ const ResultsDisplay = ({
             justifyContent: "space-between",
         },
         errorMessage: {
-            color: "red",
-            marginTop: 2,
+            p: 2,
+            backgroundColor: "paper.note.bg",
+            minHeight: "100px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontWeight: 600,
         },
         button: {
             width: "100%",

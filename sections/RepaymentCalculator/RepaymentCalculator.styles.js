@@ -13,13 +13,4 @@ export const styles = {
         marginBottom: 4,
     },
     wrapper: { pt: 4, pb: 6 },
-    errorMessage: {
-        p: 2,
-        backgroundColor: "paper.note.bg",
-        minHeight: "100px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontWeight: 600,
-    },
 };
