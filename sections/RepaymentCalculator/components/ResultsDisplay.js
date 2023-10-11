@@ -33,6 +33,9 @@ const ResultsDisplay = ({
             flexDirection: "row",
             justifyContent: "space-between",
         },
+        innerText: {
+            pr: 3,
+        },
         errorMessage: {
             p: 2,
             backgroundColor: "error.light",
@@ -62,7 +65,9 @@ const ResultsDisplay = ({
         <>
             <Stack sx={styles.outer}>
                 <Stack sx={styles.inner}>
-                    <Typography sx={styles.monthlyPayment}>
+                    <Typography
+                        sx={{ ...styles.monthlyPayment, ...styles.innerText }}
+                    >
                         Monatliche Rate
                     </Typography>
                     <Typography variant="span" component="h2">
@@ -71,12 +76,14 @@ const ResultsDisplay = ({
                 </Stack>
 
                 <Stack sx={styles.inner}>
-                    <Typography>Restschuld am Ende der Laufzeit</Typography>
+                    <Typography sx={styles.innerText}>
+                        Restschuld am Ende der Laufzeit
+                    </Typography>
                     <Typography>{formatCurrency(remainingDebt)}</Typography>
                 </Stack>
 
                 <Stack sx={styles.inner}>
-                    <Typography>Laufzeit</Typography>
+                    <Typography sx={styles.innerText}>Laufzeit</Typography>
                     <Typography>{loanDurationInYears} Jahre</Typography>
                 </Stack>
             </Stack>
