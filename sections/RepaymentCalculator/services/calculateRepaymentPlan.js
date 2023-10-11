@@ -17,6 +17,7 @@ const calculateRepaymentPlan = (
 
     const yearlyRepaymentData = [];
 
+    // Calculate the first year
     const firstYearRepayment = calculateMonthlyDebts(
         currentYear,
         interestRate,
@@ -28,6 +29,7 @@ const calculateRepaymentPlan = (
     remainingDebt = firstYearRepayment.remainingDebt;
     yearlyRepaymentData.push(firstYearRepayment.data);
 
+    // Stop calculation if the loan is paid off in the first year
     if (remainingDebt <= 0) {
         return {
             repaymentPlan: yearlyRepaymentData.slice(0, -1),
@@ -36,8 +38,10 @@ const calculateRepaymentPlan = (
             remainingLoanDuration: 0,
         };
     }
+
     currentYear++;
 
+    // Calculate the middle years
     for (let year = 1; year < durationInYears; year++) {
         const yearInterest = (remainingDebt / 100) * interestRate;
         const yearRepayment = initalRate - yearInterest;
@@ -52,6 +56,7 @@ const calculateRepaymentPlan = (
             RemainingDebt: remainingDebt,
         });
 
+        // Stop calculation if the loan is paid off in the middle years
         if (remainingDebt <= 0) {
             return {
                 repaymentPlan: yearlyRepaymentData.slice(0, -1),
@@ -64,6 +69,7 @@ const calculateRepaymentPlan = (
         currentYear++;
     }
 
+    // Calculate the last year
     const monthsRemainingLastYear = 12 - monthsRemainingFirstYear;
 
     if (monthsRemainingLastYear !== 0) {
@@ -78,6 +84,7 @@ const calculateRepaymentPlan = (
         yearlyRepaymentData.push(lastYearRepayment.data);
         remainingDebt = lastYearRepayment.remainingDebt;
 
+        // Stop calculation if the loan is paid off in the last year
         if (remainingDebt <= 0) {
             return {
                 repaymentPlan: yearlyRepaymentData.slice(0, -1),

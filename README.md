@@ -34,6 +34,11 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Deployment with Docker
+## Deployment
 
-This examples shows how to use Docker with Next.js based on the [deployment documentation](https://nextjs.org/docs/deployment#docker-image). Additionally, it contains instructions for deploying to Google Cloud Run. However, you can use any container-based deployment host.
+This example shows how to use Docker with Next.js based on the [deployment documentation](https://nextjs.org/docs/deployment#docker-image).  
+Additionally you can find there [other deployment services](https://nextjs.org/docs/pages/building-your-application/deploying#other-services).
+
+## Authors
+
+Gerald Wagner - [wagner-gerald.de](https://wagner-gerald.de)
