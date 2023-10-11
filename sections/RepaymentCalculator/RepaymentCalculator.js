@@ -81,11 +81,9 @@ const RepaymentCalculator = () => {
                     </Typography>
 
                     <ResultsDisplay
-                        monthlyPayment={showCalculation ? monthlyPayment : 0}
-                        loanDurationInYears={
-                            showCalculation ? remainingLoanDuration : 0
-                        }
-                        remainingDebt={showCalculation ? remainingDebt : 0}
+                        monthlyPayment={monthlyPayment}
+                        loanDurationInYears={remainingLoanDuration}
+                        remainingDebt={remainingDebt}
                         error={error}
                         calculateRate={calculateRate}
                         showCalculation={showCalculation}

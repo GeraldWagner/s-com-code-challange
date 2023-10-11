@@ -4,7 +4,6 @@ import {
     useMediaQuery,
     useTheme,
     Paper,
-    Box,
 } from "@mui/material";
 
 import { formatCurrency } from "../";
@@ -14,6 +13,7 @@ const ResultsDisplay = ({
     loanDurationInYears,
     remainingDebt,
     error,
+    showCalculation,
 }) => {
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
@@ -71,7 +71,9 @@ const ResultsDisplay = ({
                         Monatliche Rate
                     </Typography>
                     <Typography variant="span" component="h2">
-                        {formatCurrency(monthlyPayment)}
+                        {!showCalculation
+                            ? "-,-- €"
+                            : formatCurrency(monthlyPayment)}
                     </Typography>
                 </Stack>
 
@@ -79,12 +81,19 @@ const ResultsDisplay = ({
                     <Typography sx={styles.innerText}>
                         Restschuld am Ende der Laufzeit
                     </Typography>
-                    <Typography>{formatCurrency(remainingDebt)}</Typography>
+                    <Typography>
+                        {!showCalculation
+                            ? "-,-- €"
+                            : formatCurrency(remainingDebt)}
+                    </Typography>
                 </Stack>
 
                 <Stack sx={styles.inner}>
                     <Typography sx={styles.innerText}>Laufzeit</Typography>
-                    <Typography>{loanDurationInYears} Jahre</Typography>
+                    <Typography>
+                        {!showCalculation ? "- " : loanDurationInYears}
+                        Jahre
+                    </Typography>
                 </Stack>
             </Stack>
         </>
