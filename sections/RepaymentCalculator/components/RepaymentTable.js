@@ -54,6 +54,23 @@ const RepaymentTable = ({ repaymentPlan }) => {
             setSelectedColumn(event.target.value);
         };
 
+        const getHeaderRowName = (name) => {
+            switch (name) {
+                case "Year":
+                    return "Jahr";
+                case "RateForYear":
+                    return "Rate";
+                case "Interest":
+                    return "Zinsanteil";
+                case "Repayment":
+                    return "Tilgungsanteil";
+                case "RemainingDebt":
+                    return "Restschuld";
+                default:
+                    return name;
+            }
+        };
+
         return (
             <>
                 {isMobile && (
@@ -66,7 +83,7 @@ const RepaymentTable = ({ repaymentPlan }) => {
                         >
                             {headerRow.map((column) => (
                                 <MenuItem key={column} value={column}>
-                                    {column}
+                                    {getHeaderRowName(column)}
                                 </MenuItem>
                             ))}
                         </Select>
