@@ -36,7 +36,7 @@ function NumberFieldPercentage({
 
         if (parseFloat(inputValue) > max) {
             handleError(true);
-            setHelperText(" Wert sollte kleiner als " + max + " sein.");
+            setHelperText("Der Wert sollte kleiner als " + max + " sein.");
             return;
         }
 
