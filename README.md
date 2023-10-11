@@ -44,7 +44,7 @@ Additionally you can find there [other deployment services](https://nextjs.org/d
 Styling:  
 <https://www.sparkasse.de/rechner/tilgungsrechner.html>  
 
-MUI:  
+UI:  
 <https://mui.com/material-ui/>  
 
 Calculation:  
