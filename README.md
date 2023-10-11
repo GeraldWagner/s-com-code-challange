@@ -39,6 +39,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 This example shows how to use Docker with Next.js based on the [deployment documentation](https://nextjs.org/docs/deployment#docker-image).  
 Additionally you can find there [other deployment services](https://nextjs.org/docs/pages/building-your-application/deploying#other-services).
 
-## Authors
+## Author
 
-Gerald Wagner - [wagner-gerald.de](https://wagner-gerald.de)
+Gerald Wagner - [wagner-gerald.de](http://wagner-gerald.de)
