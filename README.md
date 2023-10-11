@@ -2,6 +2,10 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Prerequisites
+
+Before you begin, make sure you have [Node.js](https://nodejs.org/) installed on your machine.
+
 ## Getting Started
 
 Clone the repository
