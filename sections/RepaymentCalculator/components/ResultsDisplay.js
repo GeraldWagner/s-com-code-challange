@@ -4,6 +4,7 @@ import {
     useMediaQuery,
     useTheme,
     Paper,
+    Box,
 } from "@mui/material";
 
 import { formatCurrency } from "../";
@@ -41,6 +42,12 @@ const ResultsDisplay = ({
             justifyContent: "center",
             fontWeight: 600,
         },
+        monthlyPayment: {
+            fontWeight: "bold",
+            lineHeight: "1",
+            display: "flex",
+            alignItems: "flex-end",
+        },
     };
 
     if (error) {
@@ -55,19 +62,21 @@ const ResultsDisplay = ({
         <>
             <Stack sx={styles.outer}>
                 <Stack sx={styles.inner}>
-                    <Typography variant="h2">Monatliche Rate:</Typography>
-                    <Typography variant="h2">
+                    <Typography sx={styles.monthlyPayment}>
+                        Monatliche Rate
+                    </Typography>
+                    <Typography variant="span" component="h2">
                         {formatCurrency(monthlyPayment)}
                     </Typography>
                 </Stack>
 
                 <Stack sx={styles.inner}>
-                    <Typography>Restschuld:</Typography>
+                    <Typography>Restschuld am Ende der Laufzeit</Typography>
                     <Typography>{formatCurrency(remainingDebt)}</Typography>
                 </Stack>
 
                 <Stack sx={styles.inner}>
-                    <Typography>Laufzeit:</Typography>
+                    <Typography>Laufzeit</Typography>
                     <Typography>{loanDurationInYears} Jahre</Typography>
                 </Stack>
             </Stack>
