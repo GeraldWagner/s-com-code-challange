@@ -91,8 +91,8 @@ const ResultsDisplay = ({
                 <Stack sx={styles.inner}>
                     <Typography sx={styles.innerText}>Laufzeit</Typography>
                     <Typography>
-                        {!showCalculation ? "- " : loanDurationInYears}
-                        Jahre
+                        {!showCalculation ? "-" : loanDurationInYears}
+                        {" Jahre"}
                     </Typography>
                 </Stack>
             </Stack>
