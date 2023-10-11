@@ -8,6 +8,7 @@ import {
 } from "./";
 import { SlideToggleBox } from "../../components/Boxes";
 import { DividerLg } from "../../components/Dividers";
+import { SubmitButton } from "../../components/Buttons";
 
 const styles = {
     h2: {
@@ -42,7 +43,12 @@ const RepaymentCalculator = () => {
         setShowCalculation((prev) => !prev);
     };
 
-    const { repaymentPlan, monthlyPayment } = calculateRepaymentPlan(
+    const {
+        repaymentPlan,
+        monthlyPayment,
+        remainingDebt,
+        remainingLoanDuration,
+    } = calculateRepaymentPlan(
         loanAmount,
         interestRate,
         yearlyRepayment,
@@ -75,8 +81,11 @@ const RepaymentCalculator = () => {
                     </Typography>
 
                     <ResultsDisplay
-                        monthlyPayment={monthlyPayment}
-                        loanDurationInYears={loanDurationInYears}
+                        monthlyPayment={showCalculation ? monthlyPayment : 0}
+                        loanDurationInYears={
+                            showCalculation ? remainingLoanDuration : 0
+                        }
+                        remainingDebt={showCalculation ? remainingDebt : 0}
                         error={error}
                         calculateRate={calculateRate}
                         showCalculation={showCalculation}
@@ -94,6 +103,15 @@ const RepaymentCalculator = () => {
                     <CalculatorTable repaymentPlan={repaymentPlan} />
                 </SlideToggleBox>
             </Box>
+            <SubmitButton
+                variant={showCalculation ? "outlined" : "contained"}
+                size="large"
+                onClick={calculateRate}
+                sx={styles.button}
+                disabled={error ? true : false}
+            >
+                {showCalculation ? "Ausblenden" : "Berechnen"}
+            </SubmitButton>
         </Container>
     );
 };

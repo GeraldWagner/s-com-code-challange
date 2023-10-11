@@ -1,6 +1,12 @@
 import { Button } from "@mui/material";
 
-const SubmitButton = ({ children, sx, onClick, variant = "contained" }) => {
+const SubmitButton = ({
+    children,
+    sx,
+    onClick,
+    variant = "contained",
+    disabled,
+}) => {
     const styles = {
         button: {
             borderRadius: 10,
@@ -13,6 +19,7 @@ const SubmitButton = ({ children, sx, onClick, variant = "contained" }) => {
             size="large"
             onClick={onClick}
             sx={{ ...sx, ...styles.button }}
+            disabled={disabled}
         >
             {children}
         </Button>

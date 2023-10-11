@@ -6,13 +6,9 @@ const theme = createTheme({
         primary: {
             main: "#EE0000",
         },
-        status: {
-            error: red[900],
-        },
-        paper: {
-            note: {
-                bg: blue[50],
-            },
+        error: {
+            main: blue[500],
+            light: blue[50],
         },
     },
     typography: {
@@ -26,15 +22,6 @@ const theme = createTheme({
         h2: {
             fontWeight: 700,
             fontSize: "clamp(1rem, 3vw, 1rem)",
-        },
-        h3: {
-            fontWeight: 600,
-        },
-        h4: {
-            fontWeight: 600,
-        },
-        h5: {
-            fontWeight: 600,
         },
         body1: {
             fontWeight: 300,

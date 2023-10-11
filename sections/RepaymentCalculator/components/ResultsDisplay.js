@@ -6,15 +6,13 @@ import {
     Paper,
 } from "@mui/material";
 
-import { SubmitButton } from "../../../components/Buttons";
 import { formatCurrency } from "../";
 
 const ResultsDisplay = ({
     monthlyPayment,
     loanDurationInYears,
+    remainingDebt,
     error,
-    calculateRate,
-    showCalculation,
 }) => {
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
@@ -23,35 +21,25 @@ const ResultsDisplay = ({
         outer: {
             display: "flex",
             flexDirection: "column",
-            gap: 1,
+            gap: 3,
             ...(isDesktop && {
-                p: 6,
+                p: 7.4,
                 borderRadius: 4,
                 border: "1px solid #ccc",
             }),
         },
         inner: {
-            marginBottom: 2,
             flexDirection: "row",
             justifyContent: "space-between",
         },
         errorMessage: {
             p: 2,
-            backgroundColor: "paper.note.bg",
+            backgroundColor: "error.light",
             minHeight: "100px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             fontWeight: 600,
-        },
-        button: {
-            width: "100%",
-            maxWidth: "400px",
-            marginLeft: "auto",
-            marginRight: "auto",
-            display: "block",
-            marginTop: 4,
-            marginBottom: 4,
         },
     };
 
@@ -67,8 +55,15 @@ const ResultsDisplay = ({
         <>
             <Stack sx={styles.outer}>
                 <Stack sx={styles.inner}>
-                    <Typography>Monatliche Rate:</Typography>
-                    <Typography>{formatCurrency(monthlyPayment)}</Typography>
+                    <Typography variant="h2">Monatliche Rate:</Typography>
+                    <Typography variant="h2">
+                        {formatCurrency(monthlyPayment)}
+                    </Typography>
+                </Stack>
+
+                <Stack sx={styles.inner}>
+                    <Typography>Restschuld:</Typography>
+                    <Typography>{formatCurrency(remainingDebt)}</Typography>
                 </Stack>
 
                 <Stack sx={styles.inner}>
@@ -76,14 +71,6 @@ const ResultsDisplay = ({
                     <Typography>{loanDurationInYears} Jahre</Typography>
                 </Stack>
             </Stack>
-            <SubmitButton
-                variant={showCalculation ? "outlined" : "contained"}
-                size="large"
-                onClick={calculateRate}
-                sx={styles.button}
-            >
-                {showCalculation ? "Ausblenden" : "Berechnen"}
-            </SubmitButton>
         </>
     );
 };

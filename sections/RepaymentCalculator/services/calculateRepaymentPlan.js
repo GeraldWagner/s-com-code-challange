@@ -17,7 +17,6 @@ const calculateRepaymentPlan = (
 
     const yearlyRepaymentData = [];
 
-    // Calulate the first year with monthly rate
     const firstYearRepayment = calculateMonthlyDebts(
         currentYear,
         interestRate,
@@ -28,9 +27,17 @@ const calculateRepaymentPlan = (
 
     remainingDebt = firstYearRepayment.remainingDebt;
     yearlyRepaymentData.push(firstYearRepayment.data);
+
+    if (remainingDebt <= 0) {
+        return {
+            repaymentPlan: yearlyRepaymentData.slice(0, -1),
+            monthlyPayment: initialMonthlyRate,
+            remainingDebt: 0,
+            remainingLoanDuration: 0,
+        };
+    }
     currentYear++;
 
-    // Calculate the middle years with yearly rate
     for (let year = 1; year < durationInYears; year++) {
         const yearInterest = (remainingDebt / 100) * interestRate;
         const yearRepayment = initalRate - yearInterest;
@@ -44,10 +51,19 @@ const calculateRepaymentPlan = (
             Repayment: yearRepayment,
             RemainingDebt: remainingDebt,
         });
+
+        if (remainingDebt <= 0) {
+            return {
+                repaymentPlan: yearlyRepaymentData.slice(0, -1),
+                monthlyPayment: initialMonthlyRate,
+                remainingDebt: 0,
+                remainingLoanDuration: year,
+            };
+        }
+
         currentYear++;
     }
 
-    // Calculate the last year with monthly rate
     const monthsRemainingLastYear = 12 - monthsRemainingFirstYear;
 
     if (monthsRemainingLastYear !== 0) {
@@ -61,11 +77,22 @@ const calculateRepaymentPlan = (
 
         yearlyRepaymentData.push(lastYearRepayment.data);
         remainingDebt = lastYearRepayment.remainingDebt;
+
+        if (remainingDebt <= 0) {
+            return {
+                repaymentPlan: yearlyRepaymentData.slice(0, -1),
+                monthlyPayment: initialMonthlyRate,
+                remainingDebt: 0,
+                remainingLoanDuration: 12,
+            };
+        }
     }
 
     return {
         repaymentPlan: yearlyRepaymentData,
         monthlyPayment: initialMonthlyRate,
+        remainingDebt: remainingDebt,
+        remainingLoanDuration: durationInYears,
     };
 };
 
