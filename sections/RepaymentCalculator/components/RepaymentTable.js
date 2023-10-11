@@ -54,7 +54,7 @@ const RepaymentTable = ({ repaymentPlan }) => {
             setSelectedColumn(event.target.value);
         };
 
-        const getHeaderRowName = (name) => {
+        const getGermanHeaderRowName = (name) => {
             switch (name) {
                 case "Year":
                     return "Jahr";
@@ -71,6 +71,10 @@ const RepaymentTable = ({ repaymentPlan }) => {
             }
         };
 
+        const removeUnselectableColumnName = (columnName) => {
+            return columnName !== "RemainingDebt";
+        };
+
         return (
             <>
                 {isMobile && (
@@ -81,11 +85,16 @@ const RepaymentTable = ({ repaymentPlan }) => {
                             onChange={changeColumnSelect}
                             input={<OutlinedInput label="Anzeige" />}
                         >
-                            {headerRow.map((column) => (
-                                <MenuItem key={column} value={column}>
-                                    {getHeaderRowName(column)}
-                                </MenuItem>
-                            ))}
+                            {headerRow
+                                .filter(removeUnselectableColumnName)
+                                .map((columnName) => (
+                                    <MenuItem
+                                        key={columnName}
+                                        value={columnName}
+                                    >
+                                        {getGermanHeaderRowName(columnName)}
+                                    </MenuItem>
+                                ))}
                         </Select>
                     </FormControl>
                 )}
@@ -96,7 +105,7 @@ const RepaymentTable = ({ repaymentPlan }) => {
     const RepaymentTableCell = ({ name, value, align, sx }) => {
         const showCell =
             (isMobile && selectedColumn === name) ||
-            (isMobile && name === "Restschuld") ||
+            (isMobile && name === "RemainingDebt") ||
             !isMobile
                 ? true
                 : false;
